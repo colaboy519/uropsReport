@@ -126,7 +126,7 @@ theory about Fabry–Pérot cavity + relevant paper
 % put basic intro to an EOM here 
 In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). Applying a modulated electric field across such a nonlinear crystal (usualy the KDP type) and passing a beam of laser through the crystal leads to the laser beam being modulated in phase. (detail see: \cite{fundamentalsOfPhotonics}
 
-\subsubsection{theory and model}
+\subsubsection{Theory and Model}
 When a time-varying electric field is applied to the nonlinear crystal inside the EOM, the index of refraction $n$ changes in a sinusoidal manner resulting in phase modulation of the laser beam passing through the crystal. Consider the following short mathematical example to see that phase modulation is equivalent to frequency: 
 \\
 % 见激光原理for this part
@@ -156,9 +156,17 @@ If we do Fourier transform to Eqn \ref{eqn:7.1.9}, we obtain in frequency space:
 
 Eqn \ref{eqn:7.1.10} shows that when a single-frequency laser beam is modulated by a sinusoidal frequency, the modulated beam in frequency space comprises of the unmodulated frequency $\omega_0$ and infinite sidebands. Sideband frequency spacing is $\omega_m$, modulation frequency. 
 % actually not sure about this, need to double check the math
-Sideband amplitudes are determined by the Bessel function $J_n(m)$. What's of concern in this case is that EOM phase modulation produces frequency sidebands of laser beam. 
+Sideband amplitudes are determined by the Bessel function $J_n(m)$. (See Fig \ref{fig:EOMsidebandTheory}) What's of concern in this case is that EOM phase modulation produces frequency sidebands of laser beam. 
 
-\subsubsection{EOM tank circuit board: model and construction}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{EOMsidebandTheory.png}
+    \caption{modulated laser beam frequency sepctrum}
+    \label{fig:EOMsidebandTheory}
+\end{figure}
+
+\subsubsection{EOM Tank Circuit Board: Model and Construction}
+
 
 \subsection{Optical cavity allignment and coupling}
 detailed steps + photos of apparatus + possble steps for better alignment
@@ -168,7 +176,7 @@ mode matching -> see notion for detail
 \subsection{Sideband Checking}
 discuss how can the cavity be used for this + detailed description of setup + pictures (if have time)
 
-\subsection{Frequency Lock}
+\subsection{Frequency Locking a Laser}
 discuss: laser frequency locking mechanisms + how can the cavity be used for this + detailed description of setup + pictures (if have time)
 
 Stabilisation arrangements 
@@ -180,6 +188,13 @@ Stabilisation arrangements
 2. coupling to a diffraction grating
     1. linewidth reduction to the 100kHz level
     2. the light diffracted from a grating is coupled back into the diodech
+
+\\
+\\
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983}. and \cite{PDHintro}. 
+\\
+\\
+
 
 \subsection{Wavelength Measurement}
 figure out how to use it to measure wavelength
