@@ -3,8 +3,6 @@
 \usepackage[a4paper,margin=1.5cm,top=2cm]{geometry}
 \usepackage{graphicx}
 \graphicspath{/Users/JohnnyLin/Desktop/Dzmitry_Lab /UROPS/uropsReport/figures}
-
-
 \usepackage{float}
 \usepackage{gensymb}
 \usepackage{datetime}
@@ -15,12 +13,10 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{multirow,multicol}
 \usepackage{adjustbox}
-
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 % \fancyhf{}
-\rhead{FTIR}
+\rhead{UROPS-CQT}
 \lhead{Lin Zhonglin A0222183N}
 
 \title{UROPS Report}
@@ -53,7 +49,7 @@
 different modes of a laser + relate to mode hopping in "Tuning laser" section
 
 ..\subsection{Building and Tuning The Laser}
-\cite{RICCI1995541}theory about tuning a diode laser: frequency jumping + how I adjusted temp, current, angle of grating to tune frequency + discuss how the process can be automated.
+\cite{compactGratingDiodeLaser}theory about tuning a diode laser: frequency jumping + how I adjusted temp, current, angle of grating to tune frequency + discuss how the process can be automated.
 temp: don't let temp go below due point (about 17) 
 
 \begin{figure}[H]
@@ -126,13 +122,43 @@ what is this particular 638nm used in the lab for? -> for switching the trapped 
 theory about Fabry–Pérot cavity + relevant paper 
 
 
-\subsection{Electro-optic Modulator}
-In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). 
+\subsection{EOM (Electro-optic Modulator)}
+% put basic intro to an EOM here 
+In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). Applying a modulated electric field across such a nonlinear crystal (usualy the KDP type) and passing a beam of laser through the crystal leads to the laser beam being modulated in phase. (detail see: \cite{fundamentalsOfPhotonics}
 
-brief introduction on how it works + detailed steps in building it + how to test it 
+\subsubsection{theory and model}
+When a time-varying electric field is applied to the nonlinear crystal inside the EOM, the index of refraction $n$ changes in a sinusoidal manner resulting in phase modulation of the laser beam passing through the crystal. Consider the following short mathematical example to see that phase modulation is equivalent to frequency: 
+\\
+% 见激光原理for this part
+Suppose instantaneous electric field at a point of EM wave of a laser beam: 
+\begin{align*}
+    E_c(t) = A_c cos(\omega_c T + \varphi_c)
+\end{align*}
+With phase modulation (assume sinusoidal modulation), we have final phase of the electric field of the EM wave: 
+\begin{align*}
+    \psi(t) &= \omega_c t + \varphi_c + \Delta \varphi (t) \\
+            &= \omega_c t + \varphi_c + m_{\varphi} sin(\omega_m t)
+\end{align*}
+So the modulated electric field now becomes: 
+\begin{align}
+    E(t) &= A_c cos[ \omega_c t + m_{\varphi} sin(\omega_m t) + \varphi_c] \label{eqn:7.1.9}\\
+         &= A_c cos\left\{  \int_0^t [ \omega_c + \Delta ]\omega(t)] dt + \varphi_c \right\} \\
+\end{align}
+where, 
+\begin{equation*}
+    \Delta \omega (t) = \frac{d\Delta \varphi (t)}{dt}
+\end{equation*}
+If we do Fourier transform to Eqn \ref{eqn:7.1.9}, we obtain in frequency space: 
+\begin{equation}
+    E(\omega) = A_c J_0(m) \delta(\omega - \omega_c) + A_c\sum_{n=1}^\infty J_m(m) \left\{ \delta[\omega-(\omega_c + n\omega_m)] +(-1)^n\delta[\omega-(\omega_c-n\omega_m)]\right\}
+    \label{eqn:7.1.10}
+\end{equation}
 
-can discuss relevant RF electornics in the lab as well
-can discuss: the triangle-wave generator
+Eqn \ref{eqn:7.1.10} shows that when a single-frequency laser beam is modulated by a sinusoidal frequency, the modulated beam in frequency space comprises of the unmodulated frequency $\omega_0$ and infinite sidebands. Sideband frequency spacing is $\omega_m$, modulation frequency. 
+% actually not sure about this, need to double check the math
+Sideband amplitudes are determined by the Bessel function $J_n(m)$. What's of concern in this case is that EOM phase modulation produces frequency sidebands of laser beam. 
+
+\subsubsection{EOM tank circuit board: model and construction}
 
 \subsection{Optical cavity allignment and coupling}
 detailed steps + photos of apparatus + possble steps for better alignment
@@ -187,6 +213,7 @@ figure out how to use it to measure wavelength
 thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
 
 \section{Appendix}
+
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
