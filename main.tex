@@ -117,11 +117,52 @@ brief literature review + what I did + what it can be done better if higher prec
 \subsection{Section conclusion}
 what is this particular 638nm used in the lab for? -> for switching the trapped ion's state right? 
 
+
 \section{Building and tuning Reference Cavity for 935nm laser}
 \subsection{Theory}
 theory about Fabry–Pérot cavity + relevant paper 
 
 
+
+
+\subsection{Optical cavity allignment and coupling}
+detailed steps + photos of apparatus + possble steps for better alignment
+
+mode matching -> see notion for detail
+
+\subsection{Sideband Checking}
+discuss how can the cavity be used for this + detailed description of setup + pictures (if have time)
+
+
+
+\subsection{Wavelength Measurement}
+figure out how to use it to measure wavelength
+
+\ssection{Frequency Locking a Laser}
+discuss: laser frequency locking mechanisms + how can the cavity be used for this + detailed description of setup + pictures (if have time)
+
+Stabilisation arrangements 
+
+1. coupling to an external, high-Q cavity
+    1. a fraction of the output beam is coupled into a high-Q Fabry-Perot resonator and redirected back into the diode laser
+    2. geometry of this kind can provide radiation with a linewidth below 10kHz 
+    3. relative high level of technical complexity 
+2. coupling to a diffraction grating
+    1. linewidth reduction to the 100kHz level
+    2. the light diffracted from a grating is coupled back into the diodech
+
+\\
+
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983} and \cite{PDHintro}. 
+\\
+\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{PDHlayout.png}
+    \caption{The basic layout for locking a cavity to a laser. Solid lines are optical paths and dashed lines are signal paths. The signal going to the laser controls its frequency \cite{PDHintro}}
+    \label{fig:PDHlayout}
+\end{figure}
 \subsection{EOM (Electro-optic Modulator)}
 % put basic intro to an EOM here 
 In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). Applying a modulated electric field across such a nonlinear crystal (usualy the KDP type) and passing a beam of laser through the crystal leads to the laser beam being modulated in phase. (detail see: \cite{fundamentalsOfPhotonics}
@@ -165,39 +206,8 @@ Sideband amplitudes are determined by the Bessel function $J_n(m)$. (See Fig \re
     \label{fig:EOMsidebandTheory}
 \end{figure}
 
-\subsubsection{EOM Tank Circuit Board: Model and Construction}
+ \subsubsection{EOM Tank Circuit Board: Model and Construction}
 
-
-\subsection{Optical cavity allignment and coupling}
-detailed steps + photos of apparatus + possble steps for better alignment
-
-mode matching -> see notion for detail
-
-\subsection{Sideband Checking}
-discuss how can the cavity be used for this + detailed description of setup + pictures (if have time)
-
-\subsection{Frequency Locking a Laser}
-discuss: laser frequency locking mechanisms + how can the cavity be used for this + detailed description of setup + pictures (if have time)
-
-Stabilisation arrangements 
-
-1. coupling to an external, high-Q cavity
-    1. a fraction of the output beam is coupled into a high-Q Fabry-Perot resonator and redirected back into the diode laser
-    2. geometry of this kind can provide radiation with a linewidth below 10kHz 
-    3. relative high level of technical complexity 
-2. coupling to a diffraction grating
-    1. linewidth reduction to the 100kHz level
-    2. the light diffracted from a grating is coupled back into the diodech
-
-\\
-\\
-Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983}. and \cite{PDHintro}. 
-\\
-\\
-
-
-\subsection{Wavelength Measurement}
-figure out how to use it to measure wavelength
 
 
 \section{Other Discussions}
@@ -215,7 +225,6 @@ figure out how to use it to measure wavelength
     \end{enumerate}
 \end{enumerate}
 
-\subsection{Classical to quantum regime of optics}
 
 \section{Conclusion}
 \begin{enumerate}
