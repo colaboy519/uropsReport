@@ -232,6 +232,16 @@ Since we have an intended EOM modulation frequency frequency $f_0$, and the capa
 %TODO: insert measurements of crystal capacitance here
 \par
 After measurement of $C_1$, we can estimate the capacitance of the tank circuit board to be $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$. This is because $C_1 \gg C_2$ where $C_2$ is a coupling capacitor that will be explained later. The resonant frequency of the tank circuit can be estimated to be $f = \frac{\omega}{2\pi} = \frac{1}{2\pi\sqrt{LC'^2}}$. Rearranging to get $L = \frac{1}{(2\pi f C_1)^2}$, to get a resonant frequency of about 35 MHz, a $2 \micro H$ inductor is needed, the closest off-the-shelf inductor is $2.2 \micro H$. 
+\par
+Next the overall impedance of the EOM tank circuit needs to be matched to be $50\ohm$ such such that RF signal going to the EOM tank will be mostly absorbed and not reflected. In order tune the overall impedance of the EOM tank circuit, a coupling capacitor $C_2$ is added as shown in schematic \ref{fig:eom-tank-cirucuit1}. The overall loss of the EOM tank circuit can be modelled by a resistor as shown in Fig 
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+
 
 \begin{figure}[H]
     \centering
@@ -240,9 +250,12 @@ After measurement of $C_1$, we can estimate the capacitance of the tank circuit 
     \label{fig:eom-freq-measurement-setup.png}
 \end{figure}
 
-
-
-
+\begin{figure}[H]
+    \centering
+    \includegraphics{EOMfrequencyMeasurement.png}
+    \caption{EOM tank circuit frequency measurement setup}
+    \label{fig:EOMfrequencyMeasurement}
+\end{figure}
 
 \section{Other Discussions}
 \subsection{General Optical Lab Techniques and devices}
