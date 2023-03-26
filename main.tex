@@ -63,10 +63,10 @@ temp: don't let temp go below due point (about 17)
 \subsection{Fiber Coupling}
 (Coupling laser into a single-mode optical fiber) 
 brief theory + detailed steps of it being done + how can be done better (automation) 
-2. Coupling a beam into a fibre 
-    1. 用laser pen
-    2. 在两个位置，分别用两个自由度调
-    3. 最后提高功率，取出激光笔，四个扭左右转一转直到有光从fiber出来
+% 2. Coupling a beam into a fibre 
+%     1. 用laser pen
+%     2. 在两个位置，分别用两个自由度调
+%     3. 最后提高功率，取出激光笔，四个扭左右转一转直到有光从fiber出来
     
 1. Using a power meter 
     1. Adjust the 4 knobs independently → find the maximum point for each knob
@@ -139,36 +139,12 @@ discuss how can the cavity be used for this + detailed description of setup + pi
 \subsection{Wavelength Measurement}
 figure out how to use it to measure wavelength
 
-\section{Frequency Locking a Laser}
-discuss: laser frequency locking mechanisms + how can the cavity be used for this + detailed description of setup + pictures (if have time)
 
-Stabilisation arrangements 
-
-1. coupling to an external, high-Q cavity
-    1. a fraction of the output beam is coupled into a high-Q Fabry-Perot resonator and redirected back into the diode laser
-    2. geometry of this kind can provide radiation with a linewidth below 10kHz 
-    3. relative high level of technical complexity 
-2. coupling to a diffraction grating
-    1. linewidth reduction to the 100kHz level
-    2. the light diffracted from a grating is coupled back into the diodech
-
-\\
-
-Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983} and \cite{PDHintro}. 
-\\
-\\
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{PDHlayout.png}
-    \caption{The basic layout for locking a cavity to a laser. Solid lines are optical paths and dashed lines are signal paths. The signal going to the laser controls its frequency \cite{PDHintro}}
-    \label{fig:PDHlayout}
-\end{figure}
-\subsection{EOM (Electro-optic Modulator)}
+\section{EOM (Electro-optic Modulator)}
 % put basic intro to an EOM here 
 In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). Applying a modulated electric field across such a nonlinear crystal (usualy the KDP type) and passing a beam of laser through the crystal leads to the laser beam being modulated in phase. (detail see: \cite{fundamentalsOfPhotonics}
 
-\subsubsection{Theory and Model}
+\subsection{Theory and Model}
 When a time-varying electric field is applied to the nonlinear crystal inside the EOM, the index of refraction $n$ changes in a sinusoidal manner resulting in phase modulation of the laser beam passing through the crystal. Consider the following short mathematical example to see that phase modulation is equivalent to frequency: 
 \\
 % 见激光原理for this part
@@ -207,17 +183,17 @@ Sideband amplitudes are determined by the Bessel function $J_n(m)$. (See Fig \re
     \label{fig:EOMsidebandTheory}
 \end{figure}
 
- \subsubsection{EOM Tank Circuit Board: Model and Construction}
+ \subsection{EOM Tank Circuit Board: Model and Construction}
 To construct an EOM tank circuit board and tune it to a partiular frequency, the following sources are useful: 
 \begin{enumerate}
     \item paper: Design and construction of an efficient electro-optic modulator for laser spectroscopy\cite{20MHzEOM}
     \item textbook: Fundamentals of Photonics\cite{fundamentalsOfPhotonics}
-    \item Prof Christian group's internal wiki has an entry on "How to build an EOM"
+    \item Prof Christian group's internal wiki has an entry on "How to build an EOM". There is a set of detailed note on EOM construction written by Meng Khoon. 
 \end{enumerate}
 The schematic of EOM circuit board is shown in Fig \ref{fig:eom-tank-cirucuit1}. Note that the components L, $C_1$, $C_2$ are nonideal components, i.e. the parasitics are ignored here.
 $C_1$ refers to EOM crystal (ideally with correct AR coating for the relevant wavelength, in my case $\approx$738nm and $\approx$965nm)
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=.5\textwidth]{eom-tank-cirucuit1.png}
     \caption{EOM tank circuit board schematic (non-ideal component)}
@@ -233,15 +209,18 @@ Since we have an intended EOM modulation frequency frequency $f_0$, and the capa
 \par
 After measurement of $C_1$, we can estimate the capacitance of the tank circuit board to be $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$. This is because $C_1 \gg C_2$ where $C_2$ is a coupling capacitor that will be explained later. The resonant frequency of the tank circuit can be estimated to be $f = \frac{\omega}{2\pi} = \frac{1}{2\pi\sqrt{LC'^2}}$. Rearranging to get $L = \frac{1}{(2\pi f C_1)^2}$, to get a resonant frequency of about 35 MHz, a $2 \micro H$ inductor is needed, the closest off-the-shelf inductor is $2.2 \micro H$. 
 \par
-Next the overall impedance of the EOM tank circuit needs to be matched to be $50\ohm$ such such that RF signal going to the EOM tank will be mostly absorbed and not reflected. In order tune the overall impedance of the EOM tank circuit, a coupling capacitor $C_2$ is added as shown in schematic \ref{fig:eom-tank-cirucuit1}. The overall loss of the EOM tank circuit can be modelled by a resistor as shown in Fig 
-\begin{figure}
+Next the overall impedance of the EOM tank circuit needs to be matched to be $50\ohm$ such such that RF signal going to the EOM tank will be mostly absorbed and not reflected. In order tune the overall impedance of the EOM tank circuit, a coupling capacitor $C_2$ is added as shown in schematic \ref{fig:eom-tank-cirucuit1}. The overall loss of the EOM tank circuit can be modelled by a resistor $R_p$ as shown in Fig \ref{fig:eom-tank-cirucuit2}. Here we consider the components ideal. Note that parasitic resistance can be dependent on signal frequency, environment and many others. Here take it as $ R_p \approx 15 \Ohm$ based on Meng Khoon's note. However, much more careful characterisations of the circuit can be done. The coupling capacitor does not affect the tank circuit resonant frequency significantly as $C_1 \gg C_2$. so $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$ as mentioned earlier.  
+
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[width=.8\textwidth]{eom-tank-cirucuit2.png}
+    \caption{EOM tank circuit, modelling overall loss}
+    \label{fig:eom-tank-cirucuit2}
 \end{figure}
 
-
+We can calculate the overall impedance of the circuit based on this model. Setting overall impedance to be $50\Ohm$, the needed $C_2$ can be backcalculated to be $C_2 = \frac{\sqrt{50/R_p -1}}{50} \approx 93.8 nF$ which is indeed much smaller than $C_1 \approx 3 \micro F$. Choose a variable capacitor around this range of capacitance. 
+\par
+Lastly set up a measurement circuit as shown in Fig \ref{fig:eom-freq-measurement-setup.png}. Tune the variable capacitor until reflected signal from the EOM tank circuit board is minimum. Note that most variable capacitor has a tuning range of less than $360\degree$, so tune slowly until the valley shown on the spectrum analyser is the deepest. 
 
 \begin{figure}[H]
     \centering
@@ -250,12 +229,36 @@ Next the overall impedance of the EOM tank circuit needs to be matched to be $50
     \label{fig:eom-freq-measurement-setup.png}
 \end{figure}
 
+After tuning the variable capacitor, my EOM tank circuit board has a resonant frequency $f_0 \approx 38 MHz$, see Fig \ref{fig:EOMfrequencyMeasurement}. 
+
 \begin{figure}[H]
     \centering
-    \includegraphics{EOMfrequencyMeasurement.png}
+    \includegraphics[width=0.8\textwidth]{EOMfrequencyMeasurement.png}
     \caption{EOM tank circuit frequency measurement setup}
     \label{fig:EOMfrequencyMeasurement}
 \end{figure}
+
+A final word on EOM construction: To improve on the Q-factor of the EOM tank circuit, parasitics of the circuit need to be better charactersied and subsequently matching impedance better. A better impedance matching will lead to higher efficiency of absorption of input RF signal. A small-voltage RF signal can bring about more significant modulation. However, my EOM as it currently is suffices for my subsequent task. 
+%TODO: measure Q-factor of my EOM board
+
+\section{Frequency Locking a Laser: Pound-Drever-Hall Method}
+Following sources are relevant to the current section: 
+\begin{enumerate}
+    \item paper: An introduction to Pound–Drever–Hall laser frequency stabilization \cite{PDHintro}. This paper gives an overview of the scheme of Pound-Drever-Hall method. 
+    \item paper: Laser phase and frequency stabilization using an optical resonator \cite{PDH1983}. This is original paper that proposed the PDH scheme in 1983. 
+\end{enumerate}
+
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983} and \cite{PDHintro}. 
+\par
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{PDHlayout.png}
+    \caption{The basic layout for locking a cavity to a laser. Solid lines are optical paths and dashed lines are signal paths. The signal going to the laser controls its frequency \cite{PDHintro}}
+    \label{fig:PDHlayout}
+\end{figure}
+
+\subsection{Fabry-Perot Cavity}
 
 \section{Other Discussions}
 \subsection{General Optical Lab Techniques and devices}
@@ -271,6 +274,8 @@ Next the overall impedance of the EOM tank circuit needs to be matched to be $50
         
     \end{enumerate}
 \end{enumerate}
+
+
 
 
 \section{Conclusion}
