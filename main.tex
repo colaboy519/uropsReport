@@ -14,6 +14,7 @@
 \usepackage{multirow,multicol}
 \usepackage{adjustbox}
 \usepackage{fancyhdr}
+\usepackage{parskip}
 \pagestyle{fancy}
 % \fancyhf{}
 \rhead{UROPS-CQT}
@@ -138,7 +139,7 @@ discuss how can the cavity be used for this + detailed description of setup + pi
 \subsection{Wavelength Measurement}
 figure out how to use it to measure wavelength
 
-\ssection{Frequency Locking a Laser}
+\section{Frequency Locking a Laser}
 discuss: laser frequency locking mechanisms + how can the cavity be used for this + detailed description of setup + pictures (if have time)
 
 Stabilisation arrangements 
@@ -207,6 +208,33 @@ Sideband amplitudes are determined by the Bessel function $J_n(m)$. (See Fig \re
 \end{figure}
 
  \subsubsection{EOM Tank Circuit Board: Model and Construction}
+To construct an EOM tank circuit board and tune it to a partiular frequency, the following sources are useful: 
+\begin{enumerate}
+    \item paper: Design and construction of an efficient electro-optic modulator for laser spectroscopy\cite{20MHzEOM}
+    \item textbook: Fundamentals of Photonics\cite{fundamentalsOfPhotonics}
+    \item Prof Christian group's internal wiki has an entry on "How to build an EOM"
+\end{enumerate}
+The schematic of EOM circuit board is shown in Fig \ref{fig:eom-tank-cirucuit1}. Note that the components L, $C_1$, $C_2$ are nonideal components, i.e. the parasitics are ignored here.
+$C_1$ refers to EOM crystal (ideally with correct AR coating for the relevant wavelength, in my case $\approx$738nm and $\approx$965nm)
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.5\textwidth]{eom-tank-cirucuit1.png}
+    \caption{EOM tank circuit board schematic (non-ideal component)}
+    \label{fig:eom-tank-cirucuit1}
+\end{figure}
+
+The task of constructing an EOM at a particular modulation frequency can be be roughly be broken into the following three steps:
+\par
+Firstly, the LC circuit is in place to act as an amplifier so that the EOM can driven with low-power RF source of $<$ 1W, yet still providing significant electric field across the crystal for phase modulation. 
+\par
+Since we have an intended EOM modulation frequency frequency $f_0$, and the capacitance of the EOM crystal $C_1$ is fixed, we need to measure $C_2$ in order to backcalculate the inductor $L$ needed. Since the capacitor is small at the $pF$ level, we need to characterise $C_1$ by hooking it up with a suitable resistor, sending a square wave through it and determine its response time. Although the capacitance of the crystal should be predominantly determined by the crystal dielectric, my observation showed that the way that it's glued to the tank circuit also affects. I used silver containing glue spreaded evenly under the crystal and attached the crystal to the EOM tank circuit board's exposed copper section. The conductive glue is such that bottom of the crystal has a common ground hence electric field across the crystal will be near homogeneous as wanted. For my crystal with the way that it was glued, $C_1 \approx 3 \micro F$.
+%TODO: insert measurements of crystal capacitance here
+\par
+After measurement of $C_1$, we can estimate the capacitance of the tank circuit board to be $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$. This is because $C_1 \gg C_2$ where $C_2$ is a coupling capacitor that will be explained later. The resonant frequency of the tank circuit can be estimated to be $f = \frac{\omega}{2\pi} = \frac{1}{2\pi\sqrt{LC'^2}}$. Rearranging to get $L = \frac{1}{(2\pi f C_1)^2}$, to get a resonant frequency of about 35 MHz, a $2 \micro H$ inductor is needed, the closest off-the-shelf inductor is $2.2 \micro H$. 
+%TODO: insert measurement of 36.7 MHz resonant freq through spectrum analyser here
+
+
 
 
 
