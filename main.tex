@@ -277,7 +277,9 @@ To couple a well collimated laser beam with beam radius $\omega_1$ (see section 
     
     \item To determine the focal length $f$, we consider how parameters of a Gaussian beam transforms through a thin convex lens (see \cite{principleOfLasersOrazio} for details). Approximately, we have $\omega' \approx \frac{\lambda f}{\pi \omega}$. Where, $\omega'$ is the 'image'-side beam waist, $\omega$ is the 'object'-side beam waist, $\lambda$ is laser beam wavelength, $f$ is the thin lens focal length. In my case, consider $\lambda = 935.18848$ nm, $\omega'$ = $0.000149419$ m. $\omega = 1.1$ mm (image-side beam radius is estimated to be so through beam characterisation) $f = frac{\omega' \pi \omega_1}{\lambda} \approx 0.552139m \approx 550mm$. However, using a lens of such focal length was not practical due to space constraint on the optical table, I used a $f=150mm$ thin lens as it was the longest focal length lens available off-the-shelf. 
     
-    \item 
+    \item Pass the laser beam through at least one mirror before entering the cavity to obtain at least 2 points of adjustment. See Fig \ref{fig:laserCavityCoupling} in Appendix for a hand-written note on how to adjust the mirrors (or fibre mount) for optical coupling using a card (either normal paper or IR paper depending on wavelength) with a hole. 
+
+    \item Lastly send a triangle wave signal of appropriate $V_{pp}$ to the piezo actuator to scan the cavity length across a certain range. The $V_{pp}$ needed depends on the scanning range needed and the behaviour of the piezo actuator. See chapter 2 of \cite{FundamentalPrinciplesofEngineeringNanometrology} for details on piezo actuators. For my case, after testing, a triangle wave generator board producing $\pm 5$V, together with a voltage gain board of coefficient 19 is used to produce a $V_{pp} \approx 190$V. 
 \end{enumerate}
 
 \section{Frequency Locking a Laser: Pound-Drever-Hall Method}
@@ -334,11 +336,11 @@ Referring to Fig \ref{fig:PDHlayout}, the basic steps of a PDH locking scheme is
 thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
 
 \section{Appendix}
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[width=\textwidth]{laserCavityCoupling.jpg}
+    \caption{Laser beam - Cavity Coupling Note}
+    \label{fig:laserCavityCoupling}
 \end{figure}
 
 \bibliographystyle{plain}
