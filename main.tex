@@ -252,7 +252,16 @@ Laser resonators are open structures containing two or more mirrors that are ali
     \item reflectivity of mirrors
     \item other optical losses: how good is the vacuum in the cavity and so on
 \end{enumerate}
-What's relevant to this report is a particular type of optical resonator: confocal Fabry-Perot cavity. Fabry-Perot cavities are optical cavities with two parallel mirrors. Confocal Fabry-Perot cavities have focal points of the two concave mirrors overlapping at the center of the cavity as shown in Fig 
+What's relevant to this report is a particular type of optical resonator: confocal Fabry-Perot cavity. Fabry-Perot cavities are optical cavities with two parallel mirrors. Confocal Fabry-Perot cavities have focal points of the two concave mirrors overlapping at the center of the cavity as shown in Fig \ref{fig:confocalCavity}. The confocal cavity I used in experiment has a cavity length of L=15cm. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = .8\textwidth]{confocalCavity.png}
+    \caption{Confocal cavity}
+    \label{fig:confocalCavity}
+\end{figure}
+
+One good way to measure the frequency of a laser's beam is send it into a Fabry-Perot cavity and look at what gets transmitted (or reflected). Light can only pass through a Fabry-Perot cavity if twice the length of the cavity is equal to an integer number of wavelengths of the light. Or equivalently put, the frequency of the light's electromagnetic wave must be an integer number times the cavity's free spectral range $\Delta \nu_{fsr} \equiv c/2L$, where $L$ is the length of the cavity and $c$ is the speed of light. For my case $\Delta \nu_{fsr} \approx 1GHz$. The cavity acts as a filter, with transmission lines, or resonances, spaced evenly in frequency every free spectral range. 
 
 \begin{figure}
     \centering
@@ -260,8 +269,6 @@ What's relevant to this report is a particular type of optical resonator: confoc
     \caption{Caption}
     \label{fig:my_label}
 \end{figure}
-
-One good way to measure the frequency of a laser's beam is send it into a Fabry-Perot cavity and look at what gets transmitted (or reflected) 
 
 \section{Frequency Locking a Laser: Pound-Drever-Hall Method}
 Following sources are relevant to the current section: 
