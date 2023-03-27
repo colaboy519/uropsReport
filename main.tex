@@ -240,6 +240,28 @@ After tuning the variable capacitor, my EOM tank circuit board has a resonant fr
 
 A final word on EOM construction: To improve on the Q-factor of the EOM tank circuit, parasitics of the circuit need to be better charactersied and subsequently matching impedance better. A better impedance matching will lead to higher efficiency of absorption of input RF signal. A small-voltage RF signal can bring about more significant modulation. However, my EOM as it currently is suffices for my subsequent task. 
 %TODO: measure Q-factor of my EOM board
+%TODO: insert an image of my actual EOM board here
+
+\section{Fabry-Perot Cavity}
+Laser resonators are open structures containing two or more mirrors that are aligned to produce optical feedback to the gain element. In the simplest case, a resonator consists of two aligned mirrors. These mirrors are called end mirrors and define the optical cavity. Optical radiation circulates within the cavity, bouncing back and forth between the end mirrors and passing through the gain element. An optical resonator can be characterised by the following parameters: 
+\begin{enumerate}
+    \item number of mirrors constituting the resonator
+    \item focal length of mirrors
+    \item radius of mirrors (usually small relative to cavity length)
+    \item length of cavity
+    \item reflectivity of mirrors
+    \item other optical losses: how good is the vacuum in the cavity and so on
+\end{enumerate}
+What's relevant to this report is a particular type of optical resonator: confocal Fabry-Perot cavity. Fabry-Perot cavities are optical cavities with two parallel mirrors. Confocal Fabry-Perot cavities have focal points of the two concave mirrors overlapping at the center of the cavity as shown in Fig 
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+One good way to measure the frequency of a laser's beam is send it into a Fabry-Perot cavity and look at what gets transmitted (or reflected) 
 
 \section{Frequency Locking a Laser: Pound-Drever-Hall Method}
 Following sources are relevant to the current section: 
@@ -248,9 +270,9 @@ Following sources are relevant to the current section:
     \item paper: Laser phase and frequency stabilization using an optical resonator \cite{PDH1983}. This is original paper that proposed the PDH scheme in 1983. 
 \end{enumerate}
 
-Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard method of frequency-locking involves a two step process outlined in \cite{PDH1983} and \cite{PDHintro}. 
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard PDH method of frequency-locking involves the following process: A laser's frequency is measured with a Fabry-Perot cavity, and this measurement is fed back to the laser to suppress\cite{PDH1983}\cite{PDHintro}.
 \par
-
+    
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{PDHlayout.png}
@@ -258,7 +280,13 @@ Tunable lasers have multiple wavelength-selecting elements such as piezo-control
     \label{fig:PDHlayout}
 \end{figure}
 
-\subsection{Fabry-Perot Cavity}
+Referring to Fig \ref{fig:PDHlayout}, the basic steps of a PDH locking scheme is outlined as following: 
+\begin{enumerate}
+    \item 
+    \item A laser beam is passed through a Pockels cell to modulate its frequency at a frequency small relative to the $\Delta \nu_{fsr}$ free spectral range of the optical cavity. My cavity has length $L=15$cm, $\Delta \nu_{fsr} = c/2L \approx 1GHz$. Hence my EOM at $\approx 38 MHz$, as discussed in the EOM section, is appropriate here. 
+\end{enumerate}
+
+
 
 \section{Other Discussions}
 \subsection{General Optical Lab Techniques and devices}
