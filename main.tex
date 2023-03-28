@@ -1,4 +1,4 @@
-\documentclass[12pt,A4Paper]{report}
+\documentclass[12pt,A4Paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,margin=1.5cm,top=2cm]{geometry}
 \usepackage{graphicx}
@@ -17,6 +17,7 @@
 \usepackage{parskip}
 \usepackage{caption}
 \usepackage{listings}
+\lstset{captionpos=b} % set the caption position to bottom
 \pagestyle{fancy}
 % \fancyhf{}
 \rhead{UROPS-CQT}
@@ -28,7 +29,7 @@
 
 \begin{document}
 \maketitle
-
+\tableofcontents
 \section{Introduction}
 Craft a short text that links up all section of my report. Possibily linking to the main ion trapping expt in lab. 
 
@@ -45,6 +46,19 @@ Resources relevant to this task:
 \end{enumerate}
 
 %TODO: insert the laser setup image here: both schematic and the real thing
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{compactDiodeLaserSchematics.png}
+    \caption{Compact Diode Laser Schematics}
+    \label{fig:compactDiodeLaserSchematics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{638laserSetup.png}
+    \caption{638nm Laser Setup}
+    \label{fig:638laserSetup}
+\end{figure}
 
 Although a free-running diode suffers from large linewidth, an optical cavity that provides optical feedback can greatly reduce its linewidth. In the system under discussion, first order light diffracted light from a grating is coupled back into the diode, so that the grating and the diode's facet form an external resonator. The use of a grating results in a linewidth reduction of two orders of magnitude and it also allows the selection of any desired wavelength. The external cavity length (distance between grating and diode) is chosen to be about 15mm optimise for single mode operation. A peltier element is embedded in the mechanical structure to maintain temperature of the system. A piezo actuator is embedded behind the grating to allow small adjustment and scan of the external cavity length. (See \cite{compactGratingDiodeLaser} for more details)
 \par
@@ -76,14 +90,26 @@ After careful replacement of the original dead diode, coarse adjustment of the w
 \subsection{Gaussian Beam Characterisation and collimation}
 %TODO: add some gaussian beam theory here
 When dealing with laser beams, Gaussian beam optics is commonly considered. As the laser diode has a rectangular shape, its initial output laser beam has an oval shape and thus not very Gaussian and not very suitable for subsequent Gaussian beam characterisation and coupling to optical fibres. A pair of anamorphic prism is first used to tune the laser beam cross section to be as circular as possible. (See Fig...) Next it's desirable to collimate the beam for ease of coupling into other optical components. Coarse collimation can be done by eyeballing the change of the beam spot diameter at different distance from the collimating lens and adjusting the position of the collimating lens to make beam spot diameter as constant as possible across the scanning distance. To achieve finer collimation, consider the following Gaussian beam characterisation process: 
+\par
+First we need to measure the beam spot diameter at different distances from the collimating lens. To do so, consider the knife edge measurement for very precise measurement. Alternatively consider using a CCD camera for measurement for precision of up to $\mu m$ level precision. 
+\par
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.6\textwidth]{knifeEdgeMeasurement.jpeg}
+    \caption{Knife Edge Measurement}
+    \label{fig:my_label}
+\end{figure}
+%TODO: insert figure of knife edge measurement here
+
 \begin{enumerate}
-    \item First we need to measure the beam spot diameter at different distances from the collimating lens. To do so, consider the knife edge measurement for very precise measurement. Alternatively consider using a CCD camera for measurement for precision of up to $\mu m$ level precision. 
+    \item 
     \begin{enumerate}
         \item knife edge measurement: %TODO: explain and import code here
         \item camera measurement: %TODO: explain and import code here
     \end{enumerate}
 
-    \item After measuring the beam diameter at as many differnt distances as possible, fit the data to the Gaussian beam beam radius - z posisiton by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
+    \item After measuring the beam diameter at as many different distances as possible, fit the data to the Gaussian beam beam radius - z position by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
 \end{enumerate}
 \subsection{Laser beam - Fiber Coupling Procedure}
 %TODO: put a picture of the set up here
@@ -332,6 +358,12 @@ thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
     \caption{Laser beam - Cavity Coupling Note}
     \label{fig:laserCavityCoupling}
 \end{figure}
+
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Gaussian Beam Characterisation code with a CCD camera, label = gaussianBeamCharacterisation]{gaussianBeamCharacterisation.py}
+
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Knife Edge Measurement Data Collection, label = knifeEdgeMeasurementDataCollection]{knifeEdgeMeasurementDataCollection.py}
+
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Knife Edge Measurement Data Processing, label = knifeEdgeMeasurementDataProcessing]{knifeEdgeMeasurementDataProcessing.py}
 
 
 \bibliographystyle{plain}
