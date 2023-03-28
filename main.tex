@@ -28,40 +28,39 @@
 \maketitle
 
 \section{Introduction}
+Craft a short text that links up all section of my report. Possibily linking to the main ion trapping expt in lab. 
 
-
-\section{Background}
+\section{Building and tuning a compact 638nm Grating Stabilized Diode Laser}
+Since their first use in atomic physics in the early 80's, diode lasers have become an important part of many modern experiments. This is primarily due to the high reliability and the low price of these devices which facilitate experiments involving a number of lasers operating at different frequencies \cite{compactGratingDiodeLaser}.
+\par
+This section of the report discusses a type of compact grating-grating stabilized diode laser system. There was a constructed 638nm laser system of this type in the lab with a dead diode. I replaced the diode and tuned the laser back to 638.....nm wavelength for probing of one of the Ytterbium ion state. 
+%TODO: search up on the exact frequency and discuss how it's used in the lab
+\par
+Resources relevant to this task: 
 \begin{enumerate}
-    \item introduction of our lab -> refer to the trapped Ytterbium ion paper
-    \item what did I do
-    \item how do the stuff I did relate to the lab in general
+    \item book - Principles of Lasers \cite{principleOfLasersOrazio}: Chapter 9 discusses semiconductor lasers. Chapter 4.7 discusses Gaussian Beam Optics. 
+    \item paper - A compact grating-stabilized diode laser system for atomic physics \cite{compactGratingDiodeLaser}: This paper discusses the detailed mechanical design and construction process of one of the most commonly used diode lasers in optics labs, with linewidth of a few 100kHz. 
 \end{enumerate}
 
-\section{Building and tuning 638nm Grating Stabilized Compact Laser}
-\subsection{Theory}
-\begin{enumerate}
-    \item lasers in general
-    \item diode laser + reference that compact laser paper
-    \item Gaussian beam optics
-    \item geometric optics -> different lens system 
-\end{enumerate}
+%TODO: insert the laser setup image here: both schematic and the real thing
 
-\subsubsection{Gaussian optics}
-different modes of a laser + relate to mode hopping in "Tuning laser" section
+Although a free-running diode suffers from large linewidth, an optical cavity that provides optical feedback can greatly reduce its linewidth. In the system under discussion, first order light diffracted light from a grating is coupled back into the diode, so that the grating and the diode's facet form an external resonator. The use of a grating results in a linewidth reduction of two orders of magnitude and it also allows the selection of any desired wavelength. The external cavity length (distance between grating and diode) is chosen to be about 15mm optimise for single mode operation. A peltier element is embedded in the mechanical structure to maintain temperature of the system. A piezo actuator is embedded behind the grating to allow small adjustment and scan of the external cavity length. (See \cite{compactGratingDiodeLaser} for more details)
+\par
+To tune the emission wavelength of this laser, consider the following rough picture. The gain profile of such laser diode has a typical width of 10nm. The emission wavelength is determined by the competition between the longitudinal modes of the laser cavity, which are typically separated by 100-200 GHz. The laser operates at the mode which experiences the maximum gain. 
+%TODO: go figure out the diode part number 
+Hence th
+Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser eission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. \cite{compactGratingDiodeLaser} suggests that the width of the accessible frequency domain is typically a fraction of the spectral range of the laser cavity. Here with laser cavity being 15mm, it's several tens of GHz. A second method which can be employed to tune the emission wavelength is to vary the injection current. This leads to a corresponding temperature change and also a change of the carrier density and thus of refractive index of the semiconductor material. Injection current tuning also suffers from mode hopping. While
+%TODO: insert the diodeLaserGainCurve image here
+After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. After that, continuous frequency scans (over 6 GHz, or 0.05m in wavelength) are possible by means of the grating piezo actuator. Anything more than that will suffer from mode hopping due to the mechanical arrangement of the setup \cite{compactGratingDiodeLaser}. 
 
-..\subsection{Building and Tuning The Laser}
+
 \cite{compactGratingDiodeLaser}theory about tuning a diode laser: frequency jumping + how I adjusted temp, current, angle of grating to tune frequency + discuss how the process can be automated.
 temp: don't let temp go below due point (about 17) 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{638laser.HEIC}
-    \caption{638nm laser}
-    \label{fig:638laser}
-\end{figure}
 
-\subsection{Fiber Coupling}
+\subsection{Laser beam - Fiber Coupling Procedure}
 (Coupling laser into a single-mode optical fiber) 
+discuss mode matching
 brief theory + detailed steps of it being done + how can be done better (automation) 
 % 2. Coupling a beam into a fibre 
 %     1. 用laser pen
@@ -117,27 +116,6 @@ brief literature review + what I did + what it can be done better if higher prec
 
 \subsection{Section conclusion}
 what is this particular 638nm used in the lab for? -> for switching the trapped ion's state right? 
-
-
-\section{Building and tuning Reference Cavity for 935nm laser}
-\subsection{Theory}
-theory about Fabry–Pérot cavity + relevant paper 
-
-
-
-
-\subsection{Optical cavity allignment and coupling}
-detailed steps + photos of apparatus + possble steps for better alignment
-
-mode matching -> see notion for detail
-
-\subsection{Sideband Checking}
-discuss how can the cavity be used for this + detailed description of setup + pictures (if have time)
-
-
-
-\subsection{Wavelength Measurement}
-figure out how to use it to measure wavelength
 
 
 \section{EOM (Electro-optic Modulator)}
@@ -279,8 +257,21 @@ To couple a well collimated laser beam with beam radius $\omega_1$ (see section 
     
     \item Pass the laser beam through at least one mirror before entering the cavity to obtain at least 2 points of adjustment. See Fig \ref{fig:laserCavityCoupling} in Appendix for a hand-written note on how to adjust the mirrors (or fibre mount) for optical coupling using a card (either normal paper or IR paper depending on wavelength) with a hole. 
 
-    \item Lastly send a triangle wave signal of appropriate $V_{pp}$ to the piezo actuator to scan the cavity length across a certain range. The $V_{pp}$ needed depends on the scanning range needed and the behaviour of the piezo actuator. See chapter 2 of \cite{FundamentalPrinciplesofEngineeringNanometrology} for details on piezo actuators. For my case, after testing, a triangle wave generator board producing $\pm 5$V, together with a voltage gain board of coefficient 19 is used to produce a $V_{pp} \approx 190$V. 
+    \item Lastly send a triangle wave signal of appropriate $V_{pp}$ to the piezo actuator to scan the cavity length across a certain range. The $V_{pp}$ needed depends on the scanning range needed and the behaviour of the piezo actuator. See chapter 2 of \cite{FundamentalPrinciplesofEngineeringNanometrology} for details on piezo actuators. For my case, after testing, a triangle wave generator board producing $\pm 5$V, together with a voltage gain board of coefficient 19 is used to produce a $V_{pp} \approx 190$V. See Fig \ref{fig:935cavityScan}, yellow line comes from a sync port of the triangle wave generator, green line comes from a photodiode at the exit end of cavity. Notice that "half a triangle" covers two peaks (not optimised in this image, but it was optimised after the image was taken), indicating that the cavity scan range is sufficient to cover a free spectral range of my cavity. Fine tune the cavity to obtain highest peaks possible 
+    \par
+    Caution: 
+    \begin{enumerate}
+        \item The piezo actuator might fracture under high negative voltage, so avoid sending in negative voltage to it. For my case, I used a offset gain baord to make sure the triangle wave sits above 0V.
+        \item The voltage sent to the piezo actuator is HV, be cautious and remember to electrically insulate the cavity from the optical table.
+    \end{enumerate}
 \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{935cavityScan.jpeg}
+    \caption{935nm laser Cavity Scan on Oscilloscope}
+    \label{fig:935cavityScan}
+\end{figure}
 
 \section{Frequency Locking a Laser: Pound-Drever-Hall Method}
 Following sources are relevant to the current section: 
@@ -289,9 +280,8 @@ Following sources are relevant to the current section:
     \item paper: Laser phase and frequency stabilization using an optical resonator \cite{PDH1983}. This is original paper that proposed the PDH scheme in 1983. 
 \end{enumerate}
 
-Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard PDH method of frequency-locking involves the following process: A laser's frequency is measured with a Fabry-Perot cavity, and this measurement is fed back to the laser to suppress\cite{PDH1983}\cite{PDHintro}.
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard PDH method of frequency-locking involves the following process: A laser's frequency is measured with a Fabry-Perot cavity, and this measurement is fed back to the laser to suppress frequency drift. \cite{PDH1983}\cite{PDHintro}
 \par
-    
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{PDHlayout.png}
@@ -301,11 +291,28 @@ Tunable lasers have multiple wavelength-selecting elements such as piezo-control
 
 Referring to Fig \ref{fig:PDHlayout}, the basic steps of a PDH locking scheme is outlined as following: 
 \begin{enumerate}
-    \item 
-    \item A laser beam is passed through a Pockels cell to modulate its frequency at a frequency small relative to the $\Delta \nu_{fsr}$ free spectral range of the optical cavity. My cavity has length $L=15$cm, $\Delta \nu_{fsr} = c/2L \approx 1GHz$. Hence my EOM at $\approx 38 MHz$, as discussed in the EOM section, is appropriate here. 
+    \item A laser beam is passed through a Pockels cell to modulate its frequency at a frequency small relative to the $\Delta \nu_{fsr}$ free spectral range of the optical cavity. My cavity has length $L=15$cm, $\Delta \nu_{fsr} = c/2L \approx 1GHz$. Hence my EOM at $\approx 38 MHz$, as discussed in the EOM section, is appropriate here. Note that EOM only modulates light of polarisation parrallel to the EOM's oscillating electric field. In my case horizontal polarisation w.r.t the optical table is used. (i.e. a quarter-wave-plate and half-wave-plate pair is used to clean up laser beam polarisation to be horizontal before entering the EOM) 
+
+    \item The beam goes do the cavity. An optical isolator is used to pick up reflected beam from the cavity. I used a quarter wave plate and a polarising beam splitter. 
+
+    \item Referring to Fig \ref{fig:cavityTransmission}, if length of the cavity is set to one side of these resonances, but near enough that some light gets transmitted, then a small change in laser frequency would produce a proportional change in the transmitted intensity. Equivalently there will be a change in the reflected beam intensity. Optimising for minimum reflection has the following benefits over optimising for maximum transmission: 
+    \begin{enumerate}
+        \item Effect of laser frequency drift and intensity drift is decoupled due to obvious reason.
+        \item The frequency of frequency drift that can be corrected for is not restricted by the cavity response time. As when measuring transmission intensity, it takes time for the fields in the cavity to re-equilibrate whenever there is frequency drift. Whereas measuring reflected intensity circumvents this issue. 
+    \end{enumerate}
+
+    \item In order to have a control loop that locks the laser to a certain frequency, we need an error signal that tells provides a $\pm$ sign for the feedback signal on top of the amplitude as given by the last point. To obtain an error signal, the EOM comes into play in that it varies the laser frequency slightly (small w.r.t cavity free spectral range as discussed earlier), indicating whether laser frequency is currently on the right side or left side of resonance. 
+
+    \item What's left is to produce an error signal by using a fast photodiode (fast enough to discern MHz level modulation) to read beam intensity coming from the optical isolator. Signal from the fast photodiode is then processed as shown in Fig \ref{fig:PDHlayout}. For details on how the multiplicative mixer and the phase shifter helps output an error signal, see \cite{PDHintro}.
+
+    \item Caution: Note that wave plates and polarising beam splitter are wavelength rated
 \end{enumerate}
 
+%TODO: insert image of my setup here
+%TODo: insert image of error signal here
 
+\subsection{Measuring Water Vapor concentration Using the PDH Setup}
+Discuss: I am not doing the laser lock, but instead locking the cavity length to the frequency stable 738nm laser and measuring intensity drift due to water vapor change (as 935nm is readily absorbed by water) of the frequency-stable 935nm laser to indicate a water vapor concentration drift. 
 
 \section{Other Discussions}
 \subsection{General Optical Lab Techniques and devices}
