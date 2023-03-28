@@ -46,12 +46,30 @@ Resources relevant to this task:
 
 Although a free-running diode suffers from large linewidth, an optical cavity that provides optical feedback can greatly reduce its linewidth. In the system under discussion, first order light diffracted light from a grating is coupled back into the diode, so that the grating and the diode's facet form an external resonator. The use of a grating results in a linewidth reduction of two orders of magnitude and it also allows the selection of any desired wavelength. The external cavity length (distance between grating and diode) is chosen to be about 15mm optimise for single mode operation. A peltier element is embedded in the mechanical structure to maintain temperature of the system. A piezo actuator is embedded behind the grating to allow small adjustment and scan of the external cavity length. (See \cite{compactGratingDiodeLaser} for more details)
 \par
-To tune the emission wavelength of this laser, consider the following rough picture. The gain profile of such laser diode has a typical width of 10nm. The emission wavelength is determined by the competition between the longitudinal modes of the laser cavity, which are typically separated by 100-200 GHz. The laser operates at the mode which experiences the maximum gain. 
-%TODO: go figure out the diode part number 
-Hence th
-Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser eission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. \cite{compactGratingDiodeLaser} suggests that the width of the accessible frequency domain is typically a fraction of the spectral range of the laser cavity. Here with laser cavity being 15mm, it's several tens of GHz. A second method which can be employed to tune the emission wavelength is to vary the injection current. This leads to a corresponding temperature change and also a change of the carrier density and thus of refractive index of the semiconductor material. Injection current tuning also suffers from mode hopping. While
-%TODO: insert the diodeLaserGainCurve image here
-After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. After that, continuous frequency scans (over 6 GHz, or 0.05m in wavelength) are possible by means of the grating piezo actuator. Anything more than that will suffer from mode hopping due to the mechanical arrangement of the setup \cite{compactGratingDiodeLaser}. 
+To tune the emission wavelength of this laser, consider the following rough picture. The gain profile of such laser diode has a typical width of 10nm. The emission wavelength is determined by the competition between the longitudinal modes of the laser cavity, which are typically separated by 100-200 GHz. The laser operates at the mode which experiences the maximum gain (See Fig \ref{fig:diodeLaserGainCurve}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{diodeLaserGainCurve.jpg}
+    \caption{Laser Diode Gain Profile}
+    \label{fig:diodeLaserGainCurve}
+\end{figure}
+Hence there are two main ways of tuning the emmision wavelength, tuning the temperature or the injection current: \cite{compactGratingDiodeLaser}. 
+\begin{enumerate}
+    \item Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser eission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. \cite{compactGratingDiodeLaser} suggests that the width of the accessible frequency domain is typically a fraction of the spectral range of the laser cavity. Here with laser cavity being 15mm, it's several tens of GHz.
+
+    \item A second method which can be employed to tune the emission wavelength is to vary the injection current. This leads to a corresponding temperature change and also a change of the carrier density and thus of refractive index of the semiconductor material. Injection current tuning also suffers from mode hopping. 
+    \par
+    Note: Temperature tuning can cover a frequency range of the order of several tens of nm in wavelength at a typical rate of 0.3 nm/K, injection current typically covers a range of several tens of GHz only at a typical rate of 4GHz/mA. 
+\end{enumerate}
+ 
+After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. The main goal now is to vary the temperature and injection current in search for a mode-hopping-free region in the gain profile near the desired wavelength of around 638.615nm. 
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 
 
 \cite{compactGratingDiodeLaser}theory about tuning a diode laser: frequency jumping + how I adjusted temp, current, angle of grating to tune frequency + discuss how the process can be automated.
