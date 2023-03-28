@@ -1,4 +1,4 @@
-\documentclass[11pt,A4Paper]{article}
+\documentclass[12pt,A4Paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[a4paper,margin=1.5cm,top=2cm]{geometry}
 \usepackage{graphicx}
@@ -15,6 +15,8 @@
 \usepackage{adjustbox}
 \usepackage{fancyhdr}
 \usepackage{parskip}
+\usepackage{caption}
+\usepackage{listings}
 \pagestyle{fancy}
 % \fancyhf{}
 \rhead{UROPS-CQT}
@@ -62,79 +64,42 @@ Hence there are two main ways of tuning the emmision wavelength, tuning the temp
     Note: Temperature tuning can cover a frequency range of the order of several tens of nm in wavelength at a typical rate of 0.3 nm/K, injection current typically covers a range of several tens of GHz only at a typical rate of 4GHz/mA. 
 \end{enumerate}
  
-After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. The main goal now is to vary the temperature and injection current in search for a mode-hopping-free region in the gain profile near the desired wavelength of around 638.615nm. 
+After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. The main goal now is to vary the temperature and injection current in search for a mode-hopping-free region in the gain profile near the desired wavelength of around 638.615nm. Fig \ref{fig:diodeLaserEW} shows a few tens of data points of temperature-EW plots. The bottom data points from a dense grid as expected, showing that it's a mode-hop-free region. Whereas the top few data points probably is a result of mode hopping. After many trial and error, the final set of parameters arriving at EW=638.615nm is [set temperature for the peltier = 17.92$\degree$, set current = 52.3mA, current offset = -0.563 mA, piezo voltage = 2.5 V] However, this EW still suffers from drifting. 
+%TODO: explain the current offset here
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics{diodeLaserEW.png}
+    \caption{Diode EW - temperature}
+    \label{fig:diodeLaserEW}
 \end{figure}
+\subsection{Gaussian Beam Characterisation and collimation}
+%TODO: add some gaussian beam theory here
+When dealing with laser beams, Gaussian beam optics is commonly considered. As the laser diode has a rectangular shape, its initial output laser beam has an oval shape and thus not very Gaussian and not very suitable for subsequent Gaussian beam characterisation and coupling to optical fibres. A pair of anamorphic prism is first used to tune the laser beam cross section to be as circular as possible. (See Fig...) Next it's desirable to collimate the beam for ease of coupling into other optical components. Coarse collimation can be done by eyeballing the change of the beam spot diameter at different distance from the collimating lens and adjusting the position of the collimating lens to make beam spot diameter as constant as possible across the scanning distance. To achieve finer collimation, consider the following Gaussian beam characterisation process: 
+\begin{enumerate}
+    \item First we need to measure the beam spot diameter at different distances from the collimating lens. To do so, consider the knife edge measurement for very precise measurement. Alternatively consider using a CCD camera for measurement for precision of up to $\mu m$ level precision. 
+    \begin{enumerate}
+        \item knife edge measurement: %TODO: explain and import code here
+        \item camera measurement: %TODO: explain and import code here
+    \end{enumerate}
 
-
-\cite{compactGratingDiodeLaser}theory about tuning a diode laser: frequency jumping + how I adjusted temp, current, angle of grating to tune frequency + discuss how the process can be automated.
-temp: don't let temp go below due point (about 17) 
-
-
+    \item After measuring the beam diameter at as many differnt distances as possible, fit the data to the Gaussian beam beam radius - z posisiton by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
+\end{enumerate}
 \subsection{Laser beam - Fiber Coupling Procedure}
-(Coupling laser into a single-mode optical fiber) 
-discuss mode matching
-brief theory + detailed steps of it being done + how can be done better (automation) 
-% 2. Coupling a beam into a fibre 
-%     1. 用laser pen
-%     2. 在两个位置，分别用两个自由度调
-%     3. 最后提高功率，取出激光笔，四个扭左右转一转直到有光从fiber出来
-    
-1. Using a power meter 
-    1. Adjust the 4 knobs independently → find the maximum point for each knob
-    2. Walking the beam (horizontal and vertical → do separately)
-        1. defining one mirror and trying to compensate with the other mirror 
-            1. if cannot compensate, the detuned mirror is turned in the wrong direction
-            2. Else try until maximum combination found
-
-About local maxima: 
-
-1. In the initial stage: scan through a larger range to find the global maxima among the many local maxima 
-2. Later state: constantly check for whether the maxima being optimised is a local maximum → by turning left and right a bit more
-
-# Cleaning Fibre
-
-- Possible reasons for the fibre being dirty:
-    - Dirt attached due to electrostatic attraction
-- Draw out a new section of cloth
-- Draw figure 8 multiple times until clean
-- Look at the fibre using both side lighting and perpendicular lighting
-- Spray acetone onto cloth and continue with figure 8 movement
-    - Maybe debris on fibre is soluble
-
-sources: 
-1. https://www.researchgate.net/post/How-to-couple-laser-light-into-a-single-mode-fiber
-2. https://www.youtube.com/watch?v=kQvhbJbDG0M
-
-
-\subsection{Beam Characterisation}
+%TODO: put a picture of the set up here
+In order to monitor the laser system emission wavelength, part of the laser beam power is sent to the wavemeter via a fiber. To send a laser beam into a single-mode optical fibre is to couple their spatial modes, follow this procedure for coupling optimisation: 
 \begin{enumerate}
-    \item knife edge measurement (rational, procedure, put up some photos)
-    \item photo diode (attach code in annex)
-    \item can compare the two methods
-    \item fitting measurement data with gaussian approx to recover gaussian beam parameters 
-    \item possibility of automating the process
-    \item beam shaping: anamorphic prisms / lens
+    \item Make sure that the laser beam at least go through one mirror before being sent to the fibre mount to allow for two points of freedom. Rough align the collimated beam through the fiber mount without the fibre on. Try to center the beam through the fibre mount entry. 
+    \item Screw optical fiber onto the fiber mount and attach a fiber testing pen to the exit end of the fibre. Place a piece of paper on the optical path and try to align the two spots from the diode laser and the fibre pen by iteratively adjusting the mirror and the fiber mount. 
+    \item Detach the fibre pen and sent the light from the exit end of the fibre (if no light at all, go back to previous step) to a power meter and perform "Walking-the-beam" technique \cite{WalkingTheBeamThorlabs} to optimise coupling. 
+    \item If the previous step doesn't go to efficiency above 50\%, turn the fiber mount lens position to optimise. Note that this is very sensitive, so adjust the fibre mount lens with small turns of about 2-3$\degree$ at a time. As the optimised position is approached, even finer adjustment is required. 
+    \item Note that coupling efficiency above 60\% requires significantly more effort than described. More sophisticated techniques need to be employed. However, this methods should lead to a minimum of 60\% coupling, if not achievable consider: 
+    \begin{enumerate}
+        \item Clean the optics: fibre cross section and mirrors.
+        \item Check whether the fibre has any leakage by using a fibre pen and look for light leakage in a dark room. 
+        \item Consider tuning in a larger range to get out of a possible local maximum. 
+    \end{enumerate}
 \end{enumerate}
-
-\subsubsection{Beam Collimation}
-brief literature review + what I did + what it can be done better if higher precision is needed
-\begin{enumerate}
-    \item using a iris for horizontal and vertical alignment
-    \item measure the umerical aperture of the fiber + tuning a fiber mount lens for collimation + finding the gaussian parameters again thorugh beam spot characterisation and back-fitting
-\end{enumerate}
-
-
-
-
-\subsection{Section conclusion}
-what is this particular 638nm used in the lab for? -> for switching the trapped ion's state right? 
-
 
 \section{EOM (Electro-optic Modulator)}
 % put basic intro to an EOM here 
@@ -186,7 +151,7 @@ To construct an EOM tank circuit board and tune it to a partiular frequency, the
     \item textbook: Fundamentals of Photonics\cite{fundamentalsOfPhotonics}
     \item Prof Christian group's internal wiki has an entry on "How to build an EOM". There is a set of detailed note on EOM construction written by Meng Khoon. 
 \end{enumerate}
-The schematic of EOM circuit board is shown in Fig \ref{fig:eom-tank-cirucuit1}. Note that the components L, $C_1$, $C_2$ are nonideal components, i.e. the parasitics are ignored here.
+The schematic of EOM circuit board is shown in Fig \ref{fig:eom-tank-cirucuit1}. Note that the components L, $C_1$, $C_2$ are nonideal components, i.e. the parasitics are if gnored here.
 $C_1$ refers to EOM crystal (ideally with correct AR coating for the relevant wavelength, in my case $\approx$738nm and $\approx$965nm)
 
 \begin{figure}[H]
@@ -200,10 +165,10 @@ The task of constructing an EOM at a particular modulation frequency can be be r
 \par
 Firstly, the LC circuit is in place to act as an amplifier so that the EOM can driven with low-power RF source of $<$ 1W, yet still providing significant electric field across the crystal for phase modulation. 
 \par
-Since we have an intended EOM modulation frequency frequency $f_0$, and the capacitance of the EOM crystal $C_1$ is fixed, we need to measure $C_2$ in order to backcalculate the inductor $L$ needed. Since the capacitor is small at the $pF$ level, we need to characterise $C_1$ by hooking it up with a suitable resistor, sending a square wave through it and determine its response time. Although the capacitance of the crystal should be predominantly determined by the crystal dielectric, my observation showed that the way that it's glued to the tank circuit also affects. I used silver containing glue spreaded evenly under the crystal and attached the crystal to the EOM tank circuit board's exposed copper section. The conductive glue is such that bottom of the crystal has a common ground hence electric field across the crystal will be near homogeneous as wanted. For my crystal with the way that it was glued, $C_1 \approx 3 \micro F$.
+Since we have an intended EOM modulation frequency frequency $f_0$, and the capacitance of the EOM crystal $C_1$ is fixed, we need to measure $C_2$ in order to backcalculate the inductor $L$ needed. Since the capacitor is small at the $pF$ level, we need to characterise $C_1$ by hooking it up with a suitable resistor, sending a square wave through it and determine its response time. Although the capacitance of the crystal should be predominantly determined by the crystal dielectric, my observation showed that the way that it's glued to the tank circuit also affects. I used silver containing glue spreaded evenly under the crystal and attached the crystal to the EOM tank circuit board's exposed copper section. The conductive glue is such that bottom of the crystal has a common ground hence electric field across the crystal will be near homogeneous as wanted. For my crystal with the way that it was glued, $C_1 \approx 3 \mu F$.
 %TODO: insert measurements of crystal capacitance here
 \par
-After measurement of $C_1$, we can estimate the capacitance of the tank circuit board to be $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$. This is because $C_1 \gg C_2$ where $C_2$ is a coupling capacitor that will be explained later. The resonant frequency of the tank circuit can be estimated to be $f = \frac{\omega}{2\pi} = \frac{1}{2\pi\sqrt{LC'^2}}$. Rearranging to get $L = \frac{1}{(2\pi f C_1)^2}$, to get a resonant frequency of about 35 MHz, a $2 \micro H$ inductor is needed, the closest off-the-shelf inductor is $2.2 \micro H$. 
+After measurement of $C_1$, we can estimate the capacitance of the tank circuit board to be $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$. This is because $C_1 \gg C_2$ where $C_2$ is a coupling capacitor that will be explained later. The resonant frequency of the tank circuit can be estimated to be $f = \frac{\omega}{2\pi} = \frac{1}{2\pi\sqrt{LC'^2}}$. Rearranging to get $L = \frac{1}{(2\pi f C_1)^2}$, to get a resonant frequency of about 35 MHz, a $2 \mu H$ inductor is needed, the closest off-the-shelf inductor is $2.2 \mu H$. 
 \par
 Next the overall impedance of the EOM tank circuit needs to be matched to be $50\ohm$ such such that RF signal going to the EOM tank will be mostly absorbed and not reflected. In order tune the overall impedance of the EOM tank circuit, a coupling capacitor $C_2$ is added as shown in schematic \ref{fig:eom-tank-cirucuit1}. The overall loss of the EOM tank circuit can be modelled by a resistor $R_p$ as shown in Fig \ref{fig:eom-tank-cirucuit2}. Here we consider the components ideal. Note that parasitic resistance can be dependent on signal frequency, environment and many others. Here take it as $ R_p \approx 15 \Ohm$ based on Meng Khoon's note. However, much more careful characterisations of the circuit can be done. The coupling capacitor does not affect the tank circuit resonant frequency significantly as $C_1 \gg C_2$. so $C' = \frac{C_1C_2}{C_1+C_2} \approx C_1$ as mentioned earlier.  
 
@@ -214,7 +179,7 @@ Next the overall impedance of the EOM tank circuit needs to be matched to be $50
     \label{fig:eom-tank-cirucuit2}
 \end{figure}
 
-We can calculate the overall impedance of the circuit based on this model. Setting overall impedance to be $50\Ohm$, the needed $C_2$ can be backcalculated to be $C_2 = \frac{\sqrt{50/R_p -1}}{50} \approx 93.8 nF$ which is indeed much smaller than $C_1 \approx 3 \micro F$. Choose a variable capacitor around this range of capacitance. 
+We can calculate the overall impedance of the circuit based on this model. Setting overall impedance to be $50\Ohm$, the needed $C_2$ can be backcalculated to be $C_2 = \frac{\sqrt{50/R_p -1}}{50} \approx 93.8 nF$ which is indeed much smaller than $C_1 \approx 3 \mu F$. Choose a variable capacitor around this range of capacitance. 
 \par
 Lastly set up a measurement circuit as shown in Fig \ref{fig:eom-freq-measurement-setup.png}. Tune the variable capacitor until reflected signal from the EOM tank circuit board is minimum. Note that most variable capacitor has a tuning range of less than $360\degree$, so tune slowly until the valley shown on the spectrum analyser is the deepest. 
 
@@ -367,6 +332,7 @@ thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
     \caption{Laser beam - Cavity Coupling Note}
     \label{fig:laserCavityCoupling}
 \end{figure}
+
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
