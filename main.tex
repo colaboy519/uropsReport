@@ -1,12 +1,17 @@
-\documentclass[12pt,A4Paper]{article}
-\usepackage[utf8]{inputenc}
+% document layout
+\documentclass[12pt]{article}
 \usepackage[a4paper,margin=1.5cm,top=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{0pt}
+\usepackage{parskip}
+\linespread{1.4}
+
+% packages
 \usepackage{graphicx}
 \graphicspath{/Users/JohnnyLin/Desktop/Dzmitry_Lab /UROPS/uropsReport/figures}
 \usepackage{float}
 \usepackage{gensymb}
 \usepackage{datetime}
-\setlength{\parindent}{0pt}
 \usepackage{appendix}
 \usepackage{amsmath}
 \usepackage[stable]{footmisc} %for footnote in title
@@ -14,12 +19,11 @@
 \usepackage{multirow,multicol}
 \usepackage{adjustbox}
 \usepackage{fancyhdr}
-\usepackage{parskip}
 \usepackage{caption}
 \usepackage{listings}
 \lstset{captionpos=b} % set the caption position to bottom
+
 \pagestyle{fancy}
-% \fancyhf{}
 \rhead{UROPS-CQT}
 \lhead{Lin Zhonglin A0222183N}
 
@@ -45,7 +49,6 @@ Resources relevant to this task:
     \item paper - A compact grating-stabilized diode laser system for atomic physics \cite{compactGratingDiodeLaser}: This paper discusses the detailed mechanical design and construction process of one of the most commonly used diode lasers in optics labs, with linewidth of a few 100kHz. 
 \end{enumerate}
 
-%TODO: insert the laser setup image here: both schematic and the real thing
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{compactDiodeLaserSchematics.png}
@@ -69,7 +72,7 @@ To tune the emission wavelength of this laser, consider the following rough pict
     \caption{Laser Diode Gain Profile}
     \label{fig:diodeLaserGainCurve}
 \end{figure}
-Hence there are two main ways of tuning the emmision wavelength, tuning the temperature or the injection current: \cite{compactGratingDiodeLaser}. 
+Hence there are two main ways of tuning the emision wavelength, tuning the temperature or the injection current: \cite{compactGratingDiodeLaser}. 
 \begin{enumerate}
     \item Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser eission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. \cite{compactGratingDiodeLaser} suggests that the width of the accessible frequency domain is typically a fraction of the spectral range of the laser cavity. Here with laser cavity being 15mm, it's several tens of GHz.
 
@@ -89,28 +92,27 @@ After careful replacement of the original dead diode, coarse adjustment of the w
 \end{figure}
 \subsection{Gaussian Beam Characterisation and collimation}
 %TODO: add some gaussian beam theory here
-When dealing with laser beams, Gaussian beam optics is commonly considered. As the laser diode has a rectangular shape, its initial output laser beam has an oval shape and thus not very Gaussian and not very suitable for subsequent Gaussian beam characterisation and coupling to optical fibres. A pair of anamorphic prism is first used to tune the laser beam cross section to be as circular as possible. (See Fig...) Next it's desirable to collimate the beam for ease of coupling into other optical components. Coarse collimation can be done by eyeballing the change of the beam spot diameter at different distance from the collimating lens and adjusting the position of the collimating lens to make beam spot diameter as constant as possible across the scanning distance. To achieve finer collimation, consider the following Gaussian beam characterisation process: 
+When dealing with laser beams, Gaussian beam optics is commonly considered. As the laser diode has a rectangular shape, its initial output laser beam has an oval shape and thus not very Gaussian and not very suitable for subsequent Gaussian beam characterisation and coupling to optical fibres. A pair of anamorphic prism is first used to tune the laser beam cross section to be as circular as possible. (See the two red-glowing prisms in Fig \ref{fig:638laserSetup}) Next, it's desirable to collimate the beam for ease of coupling into other optical components. Coarse collimation can be done by eyeballing the change of the beam spot diameter at different distance from the collimating lens and adjusting the position of the collimating lens to make beam spot diameter as constant as possible across the scanning distance. To achieve finer collimation, consider the following Gaussian beam characterisation process: 
 \par
-First we need to measure the beam spot diameter at different distances from the collimating lens. To do so, consider the knife edge measurement for very precise measurement. Alternatively consider using a CCD camera for measurement for precision of up to $\mu m$ level precision. 
+First we need to measure the beam spot diameter at different distances from the collimating lens. To do so, consider the knife edge measurement for very precise measurement. Alternatively consider using a CCD camera for measurement for precision of up to $\mu m$ level precision (size of CCD pixels). 
 \par
+To do a proper knife edge measurement, refer to \cite{KnifeEdgeMeasurement} for details. A piece of paper blade is painted with black paint to use as the blocking knife edge. Black paint is to reduce reflection of laser beam. The black-painted paper blade is then mounted onto a translational stage as shown in Fig .... Position the blade perpendicular to the laser beam. Place a photodiode behind the blade as shown in Fig \ref{fig:knifeEdgeMeasurement} and connect the photodiode to an Arduino. Finally connect the Arduino to a computer and run code \ref{knifeEdgeMeasurementDataCollection} in Annex. The code collects three sets of voltage reading from the photodiode and take average. Move the knife edge to block more light by rotating the translational stage. run code \ref{knifeEdgeMeasurementDataCollection} in Annex again. Repeat the previous steps until reading from the photodidoe is close to background reading. Now input the distance (of knife edge) - photodiode voltage data from previous steps to code \ref{knifeEdgeMeasurementDataProcessing} in Annex for data processing. This code fits the distance-voltage data to an error function and outputs a fitted value of the laser beam width. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{knifeEdgeMeasurement.jpeg}
     \caption{Knife Edge Measurement}
-    \label{fig:my_label}
+    \label{fig:knifeEdgeMeasurement}
 \end{figure}
-%TODO: insert figure of knife edge measurement here
+%TODO: insert figure of knife edge measurement real setup here
 
-\begin{enumerate}
-    \item 
-    \begin{enumerate}
-        \item knife edge measurement: %TODO: explain and import code here
-        \item camera measurement: %TODO: explain and import code here
-    \end{enumerate}
+Although the aforementioned knife edge measurement with a knife blade is can be very precise up to the limit of diffraction caused by the blade, it's very time consuming without the translational stage being automated. With time constraint, a less precise (up to $\mu m$ level) yet much faster method with a CCD camera can be employed. Place a camera such that the laser beam spot falls completely on the CCD sensor. Run code \ref{gaussianBeamCharacterisation} in Annex to measure the laser beam spot horizontal and vertical radius at the position of the CCD sensor. The find horizontal radius, the code sums up all rows of pixels and filter for pixels exceeding $1/e^2$ of the pixel with maximum reading. Then take the right most pixel position minus the left more pixel position as an estimate of the beam spot diameter. The code runs similarly for vertical beam spot radius. For details, see code \ref{gaussianBeamCharacterisation} in Annex. 
+\par
+I used a Point Grey Research Chameleon CMLN-13S2M CCD camera for date taking. 
+%TODO: insert photon of setup here. 
+\par 
+After measuring the beam diameter at as many different distances as possible, fit the data to the Gaussian beam beam radius - z position by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
 
-    \item After measuring the beam diameter at as many different distances as possible, fit the data to the Gaussian beam beam radius - z position by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
-\end{enumerate}
 \subsection{Laser beam - Fiber Coupling Procedure}
 %TODO: put a picture of the set up here
 In order to monitor the laser system emission wavelength, part of the laser beam power is sent to the wavemeter via a fiber. To send a laser beam into a single-mode optical fibre is to couple their spatial modes, follow this procedure for coupling optimisation: 
@@ -359,11 +361,11 @@ thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
     \label{fig:laserCavityCoupling}
 \end{figure}
 
-\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Gaussian Beam Characterisation code with a CCD camera, label = gaussianBeamCharacterisation]{gaussianBeamCharacterisation.py}
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Gaussian Beam Characterisation code with a CCD camera, label=gaussianBeamCharacterisation]{gaussianBeamCharacterisation.py}
 
-\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Knife Edge Measurement Data Collection, label = knifeEdgeMeasurementDataCollection]{knifeEdgeMeasurementDataCollection.py}
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption=Knife Edge Measurement Data Collection, label=knifeEdgeMeasurementDataCollection]{knifeEdgeMeasurementDataCollection.py}
 
-\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption = Knife Edge Measurement Data Processing, label = knifeEdgeMeasurementDataProcessing]{knifeEdgeMeasurementDataProcessing.py}
+\lstinputlisting[language=Python, linewidth=0.9\textwidth, basicstyle=\small\ttfamily, breaklines=true, breakatwhitespace=true, caption=Knife Edge Measurement Data Processing, label=knifeEdgeMeasurementDataProcessing]{knifeEdgeMeasurementDataProcessing.py}
 
 
 \bibliographystyle{plain}
