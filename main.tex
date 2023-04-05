@@ -1,6 +1,7 @@
 % document layout
-\documentclass[12pt]{article}
-\usepackage[a4paper,margin=1.5cm,top=2cm]{geometry}
+\documentclass[12pt]{report}
+\usepackage{geometry}
+\geometry{left = 2cm,right = 2cm,top = 4cm}
 \usepackage[utf8]{inputenc}
 \setlength{\parindent}{0pt}
 \usepackage{parskip}
@@ -23,13 +24,26 @@
 \usepackage{listings}
 \lstset{captionpos=b} % set the caption position to bottom
 
-\pagestyle{fancy}
-\rhead{UROPS-CQT}
-\lhead{Lin Zhonglin A0222183N}
+\title{
+\includegraphics[width=0.25\textwidth]{nus_logo.png}
+\includegraphics[width=0.32\textwidth]{cqt_logo.png}\\
+{\LARGE \textbf{Implementation of Electromagnetically-Induced-Transparency Cooling for Yttberbium Ion Chains}}\\
+\vspace{5mm}
+{\normalsize A thesis submitted in partial fulfillment for the course}\\
+{\normalsize PC4199 - \textit{Honours Project in Physics}}
+}
 
-\title{UROPS Report}
-\author{Lin Zhonglin \hspace{1cm} A0222183N}
-\usdate{}
+\author{
+{\normalsize Name \hspace{10mm} Matric Num}\\
+\vspace{1mm}
+{\normalsize Supervisor: Professor }\\
+{\normalsize Assessor: Professor }\\
+{\normalsize Assessor: Professor }}\\
+\date{{\normalsize Department of Physics}\\
+{\normalsize National University of Singapore}\\
+{\normalsize Apr 2023}}
+
+
 
 \begin{document}
 \maketitle
