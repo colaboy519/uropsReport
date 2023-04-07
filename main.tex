@@ -1,22 +1,28 @@
 % document layout
 \documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{amsmath,mathtools}
+\usepackage[subpreambles=true]{standalone}
+\usepackage[document]{ragged2e}
+\usepackage[english]{babel}
+\usepackage{siunitx}
+\usepackage{cite}
+\usepackage{braket}
 \usepackage{geometry}
 \geometry{left = 2cm,right = 2cm,top = 4cm}
-\usepackage[utf8]{inputenc}
-\setlength{\parindent}{0pt}
-\usepackage{parskip}
-\linespread{1.4}
+
 
 % packages
 \usepackage{graphicx}
-\graphicspath{/Users/JohnnyLin/Desktop/Dzmitry_Lab /UROPS/uropsReport/figures}
+\graphicspath{ {images/} }
 \usepackage{float}
 \usepackage{gensymb}
 \usepackage{datetime}
 \usepackage{appendix}
 \usepackage{amsmath}
 \usepackage[stable]{footmisc} %for footnote in title
-\usepackage[hidelinks]{hyperref}
 \usepackage{multirow,multicol}
 \usepackage{adjustbox}
 \usepackage{fancyhdr}
@@ -25,36 +31,50 @@
 \lstset{captionpos=b} % set the caption position to bottom
 
 \title{
-\includegraphics[width=0.25\textwidth]{nus_logo.png}
+\includegraphics[width=0.25\textwidth]{nus_logo.jpeg}
 \includegraphics[width=0.32\textwidth]{cqt_logo.png}\\
-{\LARGE \textbf{Implementation of Electromagnetically-Induced-Transparency Cooling for Yttberbium Ion Chains}}\\
+{\LARGE \textbf{Laser Frequency Stabilisation for The Ion Trap Quantum Processor}}\\
 \vspace{5mm}
-{\normalsize A thesis submitted in partial fulfillment for the course}\\
-{\normalsize PC4199 - \textit{Honours Project in Physics}}
+{\normalsize A report submitted in partial fulfillment for the course}\\
+{\normalsize PC3288 - \textit{Advanced UROPS in Physics I}}
 }
 
 \author{
-{\normalsize Name \hspace{10mm} Matric Num}\\
+{\normalsize Lin Zhonglin \hspace{10mm} A0222183N}\\
 \vspace{1mm}
-{\normalsize Supervisor: Professor }\\
-{\normalsize Assessor: Professor }\\
+{\normalsize Supervisor: Professor Dzmitry Matsukevich}\\
+{\normalsize Assessor: Professor Dzmitry Matsukevich}\\
 {\normalsize Assessor: Professor }}\\
 \date{{\normalsize Department of Physics}\\
 {\normalsize National University of Singapore}\\
 {\normalsize Apr 2023}}
 
-
+\linespread{1.2}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
 
 \begin{document}
 \maketitle
+
+\chapter*{Abstract}
+Abstract goes here
+
+
+\chapter*{Acknowledgements}
+I would like to thank Associate Professor Dzmitry Matsukevich for this opportunity to gain in- valuable experience in a research laboratory.
+I would also like to thank my colleagues and seniors who I have spent time with over the year in Dzmitry Labs: Jaren, Mu Young, Ko Wei, Rongjie, Nigel, Ka Hui and Dillon. I would especially like to thank my project mentors, Jaren and Mu Young, for all their help and advice given throughout the project. I would also like to thank to thank all the professors and seniors in CQT that gave me a helping hand during my research struggle. 
+I would also like to thank my parents for being very supportive of me.
+This project would not have been possible without the superb people mentioned.
+
 \tableofcontents
-\section{Introduction}
+
+\chapter{Introduction}
 Craft a short text that links up all section of my report. Possibily linking to the main ion trapping expt in lab. 
 
-\section{Building and tuning a compact 638nm Grating Stabilized Diode Laser}
+\chapter{Building And Tuning A Compact 638nm Grating Stabilized Diode Laser System}
 Since their first use in atomic physics in the early 80's, diode lasers have become an important part of many modern experiments. This is primarily due to the high reliability and the low price of these devices which facilitate experiments involving a number of lasers operating at different frequencies \cite{compactGratingDiodeLaser}.
 \par
-This section of the report discusses a type of compact grating-grating stabilized diode laser system. There was a constructed 638nm laser system of this type in the lab with a dead diode. I replaced the diode and tuned the laser back to 638.....nm wavelength for probing of one of the Ytterbium ion state. 
+This section of the report discusses a compact grating-stabilized External Cavity Diode Laser (ECDL) system. Here, I focused on fixing an existing 638nm laser system that had suffered from a diode failure. I replaced the diode and tuned the laser back to 638.....nm wavelength for probing of one of the Ytterbium ion state. 
 %TODO: search up on the exact frequency and discuss how it's used in the lab
 \par
 Resources relevant to this task: 
@@ -63,6 +83,12 @@ Resources relevant to this task:
     \item paper - A compact grating-stabilized diode laser system for atomic physics \cite{compactGratingDiodeLaser}: This paper discusses the detailed mechanical design and construction process of one of the most commonly used diode lasers in optics labs, with linewidth of a few 100kHz. 
 \end{enumerate}
 
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{compactDiodeLaserSchematics.png}
@@ -104,7 +130,7 @@ After careful replacement of the original dead diode, coarse adjustment of the w
     \caption{Diode EW - temperature}
     \label{fig:diodeLaserEW}
 \end{figure}
-\subsection{Gaussian Beam Characterisation and collimation}
+\section{Gaussian Beam Characterisation and collimation}
 %TODO: add some gaussian beam theory here
 When dealing with laser beams, Gaussian beam optics is commonly considered. As the laser diode has a rectangular shape, its initial output laser beam has an oval shape and thus not very Gaussian and not very suitable for subsequent Gaussian beam characterisation and coupling to optical fibres. A pair of anamorphic prism is first used to tune the laser beam cross section to be as circular as possible. (See the two red-glowing prisms in Fig \ref{fig:638laserSetup}) Next, it's desirable to collimate the beam for ease of coupling into other optical components. Coarse collimation can be done by eyeballing the change of the beam spot diameter at different distance from the collimating lens and adjusting the position of the collimating lens to make beam spot diameter as constant as possible across the scanning distance. To achieve finer collimation, consider the following Gaussian beam characterisation process: 
 \par
@@ -127,7 +153,7 @@ I used a Point Grey Research Chameleon CMLN-13S2M CCD camera for date taking.
 \par 
 After measuring the beam diameter at as many different distances as possible, fit the data to the Gaussian beam beam radius - z position by using the code ... in Annex to arrive on estimation of the beam waist radius and z position. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
 
-\subsection{Laser beam - Fiber Coupling Procedure}
+\section{Laser beam - Fiber Coupling Procedure}
 %TODO: put a picture of the set up here
 In order to monitor the laser system emission wavelength, part of the laser beam power is sent to the wavemeter via a fiber. To send a laser beam into a single-mode optical fibre is to couple their spatial modes, follow this procedure for coupling optimisation: 
 \begin{enumerate}
@@ -143,11 +169,11 @@ In order to monitor the laser system emission wavelength, part of the laser beam
     \end{enumerate}
 \end{enumerate}
 
-\section{EOM (Electro-optic Modulator)}
+\chapter{EOM (Electro-optic Modulator)}
 % put basic intro to an EOM here 
 In certain types of crystals it is possible to effect a change in the index of refraction that is proportional to the applied electric field. This is the linear electro-opic effect (also known as the Pockels effect). Applying a modulated electric field across such a nonlinear crystal (usualy the KDP type) and passing a beam of laser through the crystal leads to the laser beam being modulated in phase. (detail see: \cite{fundamentalsOfPhotonics}
 
-\subsection{Theory and Model}
+\section{Theory and Model}
 When a time-varying electric field is applied to the nonlinear crystal inside the EOM, the index of refraction $n$ changes in a sinusoidal manner resulting in phase modulation of the laser beam passing through the crystal. Consider the following short mathematical example to see that phase modulation is equivalent to frequency: 
 \\
 % 见激光原理for this part
@@ -186,7 +212,7 @@ Sideband amplitudes are determined by the Bessel function $J_n(m)$. (See Fig \re
     \label{fig:EOMsidebandTheory}
 \end{figure}
 
- \subsection{EOM Tank Circuit Board: Model and Construction}
+\section{EOM Tank Circuit Board: Model and Construction}
 To construct an EOM tank circuit board and tune it to a partiular frequency, the following sources are useful: 
 \begin{enumerate}
     \item paper: Design and construction of an efficient electro-optic modulator for laser spectroscopy\cite{20MHzEOM}
@@ -245,7 +271,7 @@ A final word on EOM construction: To improve on the Q-factor of the EOM tank cir
 %TODO: measure Q-factor of my EOM board
 %TODO: insert an image of my actual EOM board here
 
-\section{Fabry-Perot Cavity}
+\chapter{Fabry-Perot Cavity}
 Laser resonators are open structures containing two or more mirrors that are aligned to produce optical feedback to the gain element. In the simplest case, a resonator consists of two aligned mirrors. These mirrors are called end mirrors and define the optical cavity. Optical radiation circulates within the cavity, bouncing back and forth between the end mirrors and passing through the gain element. An optical resonator can be characterised by the following parameters: 
 \begin{enumerate}
     \item number of mirrors constituting the resonator
@@ -273,7 +299,7 @@ One good way to measure the frequency of a laser's beam is send it into a Fabry-
     \label{fig:cavityTransmission}
 \end{figure}
 
-\subsection{Laser beam - Cavity Coupling}
+\section{Laser beam - Cavity Coupling}
 To couple a well collimated laser beam with beam radius $\omega_1$ (see section on laser beam collimation and characterisation in this report) into a Fabry-Perot cavity, follow these steps: 
 \begin{enumerate}
     \item Choose a thin lens (with relevant AR coating) of focal length $f$ to focus the laser beam from radius $\omega_1$ to $\omega_0$ at the center of the cavity. Gaussian beams have a propagating spherical wavefront, and each Gaussian beam is uniquely characterised by its beam waist, here being $\omega_0$. In the context of a confocal cavity, when a Gaussian has beam waist $\omega_0 = \frac{L\lambda}{2\pi}$ as shown in Fig \ref{fig:confocalCavity} the Gaussian beam spherical wavefront at the mirrors will match the curvatures of the mirrors, hence leading to stable standing waves to establish in the cavity. In my case, consider $L=15$ cm, $\lambda = 935.18848$ nm,  $\omega_0$ = $0.000149419$ m.
@@ -298,7 +324,7 @@ To couple a well collimated laser beam with beam radius $\omega_1$ (see section 
     \label{fig:935cavityScan}
 \end{figure}
 
-\section{Frequency Locking a Laser: Pound-Drever-Hall Method}
+\chapter{Frequency Locking A Laser: Pound-Drever-Hall Method}
 Following sources are relevant to the current section: 
 \begin{enumerate}
     \item paper: An introduction to Pound–Drever–Hall laser frequency stabilization \cite{PDHintro}. This paper gives an overview of the scheme of Pound-Drever-Hall method. 
@@ -336,11 +362,11 @@ Referring to Fig \ref{fig:PDHlayout}, the basic steps of a PDH locking scheme is
 %TODO: insert image of my setup here
 %TODo: insert image of error signal here
 
-\subsection{Measuring Water Vapor concentration Using the PDH Setup}
+\section{Measuring Water Vapor Concentration Using the PDH Setup}
 Discuss: I am not doing the laser lock, but instead locking the cavity length to the frequency stable 738nm laser and measuring intensity drift due to water vapor change (as 935nm is readily absorbed by water) of the frequency-stable 935nm laser to indicate a water vapor concentration drift. 
 
-\section{Other Discussions}
-\subsection{General Optical Lab Techniques and devices}
+\chapter{Other Discussions}
+\section{General Optical Lab Techniques and Devices}
 \begin{enumerate}
     \item discuss various optical devices on the optical table (reference QDevice content): wave plates, polarisers, etc -> briefly on how they work + how to use them in the lab 
     \begin{enumerate}
