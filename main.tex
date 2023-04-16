@@ -56,7 +56,7 @@
 \maketitle
 
 \chapter*{Abstract}
-As lasers are used to address atomic energy level transitions in atomic and molecular physics laboratory, it is of great importance to generate high quality lasers beams. This report first discusses the repair and tuning of a compact grating-stabilized External Cavity Diode Laser system. Secondly, this report discusses the process of locking a cavity to a master laser through a standard PDH scheme and possible uses of such a cavity lock. 
+As lasers are used to address atomic energy level transitions in atomic and molecular physics laboratory, it is of great importance to generate high quality lasers beams. This report first discusses the repair and tuning of a compact grating-stabilized External Cavity Diode Laser system (ECDL). Secondly, this report discusses the process of locking a cavity to a master laser through a standard Pound-Drever-Hall (PDH) scheme and possible uses of such a locked cavity. 
 
 
 \chapter*{Acknowledgements}
@@ -348,13 +348,22 @@ To couple a well collimated laser beam with beam radius $\omega_1$ (see section 
 \end{figure}
 
 \section{PDH Cavity Lock: Actual Setup}
-The actual set up of the PDH scheme is shown in Fig \ref{fig:PDHsetup}. In the red box there is the $\approx$ 738nm laser fiber output, polarisation cleanup waveplate pair and EOM crystal connected to local oscillator. In the blue box there is $\approx$ 935nm laser fiber output and polarisation cleanup waveplate pair. In the center row there is a beam splitter that overlaps the optical path of both 738nm and 935nm laser beams, an optical isolator formed by a PBS and a QWP for 738nm laser beam, a plano-convex lens for laser-cavity coupling, a F-P cavity connected to a triangle wave generator, lastly a detector pedal that measures transmitted intensity through the cavity. In the yellow box, a plano-convex lens focuses reflected beam from the cavity that is channelled out from the optical isolator to a fast photodiode (a transimpedance amplifier) which is then connected to a amplifier and to the mixer as shown in Fig \ref{fig:PDHlayout}. The electronic parts are shown in Fig ... The generated error signal is shown in Fig \ref{fig:errorSignal}, where the blue curve is the error signal and the yellow curve is the transmission intensity. 
+The actual set up of the PDH scheme is shown in Fig \ref{fig:PDHsetup}. In the red box there is the $\approx$ 738nm laser fiber output, polarisation cleanup waveplate pair and EOM crystal connected to local oscillator. In the blue box there is $\approx$ 935nm laser fiber output and polarisation cleanup waveplate pair. In the center row there is a beam splitter that overlaps the optical path of both 738nm and 935nm laser beams, an optical isolator formed by a PBS and a QWP for 738nm laser beam, a plano-convex lens for laser-cavity coupling, a F-P cavity connected to a triangle wave generator, lastly a detector pedal that measures transmitted intensity through the cavity. In the yellow box, a plano-convex lens focuses reflected beam from the cavity that is channelled out from the optical isolator to a fast photodiode (a transimpedance amplifier) which is then connected to a amplifier and to the mixer as shown in Fig \ref{fig:PDHlayout}. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{PDHsetup.png}
     \caption{PDH Setup}
     \label{fig:PDHsetup}
+\end{figure}
+
+The electronic parts are shown in Fig ... The signal from local oscillator is split by a fifty-fifty power splitter. One branch goes to the mixer L port. The other branch goes to an amplifier before being sent to the EOM board. One thing worth noting is that when local oscillator $V_pp$ goes above 200mV, the EOM board in Fig \ref{fig:EOMboard} radiates significant RF signal such that the wavemeter located on the top rack gets affected. Fast diode signal from Fig \ref{fig:PDHsetup} yellow box connects to mixer I port. mixer R port after passing through a low-pass filter outputs the error signal shown in Fig \ref{fig:errorSignal}, where the blue curve is the error signal and the yellow curve is the transmission intensity.  Note that from the local oscillator to the I and L ports of the mixer, signals go through different lengths. Hence, the two signals need to be phase-matched in order for the error signal to be generated properly. This was done by varying the length of the BNC cable connecting the power splitter 
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
 \end{figure}
 
 \begin{figure}[H]
@@ -364,43 +373,42 @@ The actual set up of the PDH scheme is shown in Fig \ref{fig:PDHsetup}. In the r
     \label{fig:errorSignal}
 \end{figure}
 
-\begin{figure}
+The error signal is sent to the PID board which then outputs a feedback signal to the "mod in" port of the triangle generator to lock the cavity length to the 738nm master laser. To show that the cavity is indeed locked, turn on the triangle wave generator scan after the lock is on. Fig \ref{fig:cavityLock1} shows that the cavity length stays locked when the triangle wave generator scans with low amplitude. Red curve is the sync signal from triangle wave generator. Yellow curve is the transmission signal. Blue curve is the error signal. Green signal is the PID output signal. It can be seen that as the triangle wave generator scans with a triangle wave, the PID feedbacks a reverse triangle wave to maintain the cavity length such that the transmission intensity (yellow curve) stays around the maximum intensity. However, the lock is not a very good one as it can be seen that the error signal (blue curve) doesn't stay close to 0 most of the time. Furthermore, as it can be seen from Fig \ref{fig:cavityLock2} and \ref{fig:cavityLock3}, as the triangle wave generator scans with greater amplitude, transmission intensity strays away from maximum intensity, indicating the lock has been broken. 
+
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[width=.8\textwidth]{cavityLock1.png}
+    \caption{Cavity lock with triangle wave generator scanning at low amplitude}
+    \label{fig:cavityLock1}
 \end{figure}
 
-\section{Measuring Water Vapor Concentration Using the PDH Setup}
-Discuss: I am not doing the laser lock, but instead locking the cavity length to the frequency stable 738nm laser and measuring intensity drift due to water vapor change (as 935nm is readily absorbed by water) of the frequency-stable 935nm laser to indicate a water vapor concentration drift. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{cavityLock2.png}
+    \caption{Cavity lock with triangle wave generator scanning at medium amplitude}
+    \label{fig:cavityLock2}
+\end{figure}
 
-\chapter{Other Discussions}
-\section{General Optical Lab Techniques and Devices}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{cavityLock3.png}
+    \caption{Cavity lock with triangle wave generator scanning at high amplitude}
+    \label{fig:cavityLock3}
+\end{figure}
+
+There are two major remaining tasks. Firstly, a phase delay board is needed to better matched the two signals going into the mixer to generator a better error signal. Secondly, the PID parameters need to be better tuned to tighten the feedback lock. 
+
+\section{Possible Uses Of The Locked Cavity}
+Assuming that cavity length has now been locked to the 738nm master laser. Here are a list of uses and fun projects involving the locked cavity" 
 \begin{enumerate}
-    \item discuss various optical devices on the optical table (reference QDevice content): wave plates, polarisers, etc -> briefly on how they work + how to use them in the lab 
-    \begin{enumerate}
-        \item wave plates, polarisers
-        \item AR coating
-        \item laser power meter: wavelength selection -> response curve
-        \item lens cleaning
-        \item DIY relevant tools in the lab. examples: strips of paper for ray tracing
-        \item electronics stuff: soldering, PCB board inspection
-        
-    \end{enumerate}
+    \item Adding a dichoric lens and a second fast diode creates a second PHD setup for $\approx$935nm laser that can be used to frequency locking. As discussed earlier, the frequency of the $\approx$935nm laser needs to be stabilised for continuous optical repumping.
+    \item As the cavity length is now stabilised, if both the 935nm and 738nm lasers' output intensity are sufficiently stable, variation in transmission intensity can be attributed to factors such as watervapor absorption of 935nm laser since this wavelength happens to be quite close to a water molecule absorption peak. 
 \end{enumerate}
 
-
-
+However, as at the moment the 738nm master laser is not properly locked to the Ytterbium atomic cell these ideas have not been executed.
 
 \section{Conclusion}
-\begin{enumerate}
-    \item what have I learn: about theory and experimental physics lab
-    \item what have I done 
-    \item possible follow up investigations / improvement on existing current
-\end{enumerate}
-
-\section{Acknowledgements}
-thank the lab people! Jaren, Muyoung, Dzmitry, Nigel, Kowei
+To conclude, during my year in the laboratory I picked up various optical laboratory skills, repaired and tuned a diode laser and built a cavity lock using PDH scheme. Possible future works include optimising and characterising the cavity lock, and testing the suggested applications of the cavity lock. 
 
 \section{Appendix}
 \subsection{Gaussian Beam - Single Mode Fibre Coupling Procedure} \label{appendix:laerFibreCoupling}
