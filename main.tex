@@ -348,7 +348,28 @@ To couple a well collimated laser beam with beam radius $\omega_1$ (see section 
 \end{figure}
 
 \section{PDH Cavity Lock: Actual Setup}
+The actual set up of the PDH scheme is shown in Fig \ref{fig:PDHsetup}. In the red box there is the $\approx$ 738nm laser fiber output, polarisation cleanup waveplate pair and EOM crystal connected to local oscillator. In the blue box there is $\approx$ 935nm laser fiber output and polarisation cleanup waveplate pair. In the center row there is a beam splitter that overlaps the optical path of both 738nm and 935nm laser beams, an optical isolator formed by a PBS and a QWP for 738nm laser beam, a plano-convex lens for laser-cavity coupling, a F-P cavity connected to a triangle wave generator, lastly a detector pedal that measures transmitted intensity through the cavity. In the yellow box, a plano-convex lens focuses reflected beam from the cavity that is channelled out from the optical isolator to a fast photodiode (a transimpedance amplifier) which is then connected to a amplifier and to the mixer as shown in Fig \ref{fig:PDHlayout}. The electronic parts are shown in Fig ... The generated error signal is shown in Fig \ref{fig:errorSignal}, where the blue curve is the error signal and the yellow curve is the transmission intensity. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{PDHsetup.png}
+    \caption{PDH Setup}
+    \label{fig:PDHsetup}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.8\textwidth]{errorSignal.png}
+    \caption{Error signal}
+    \label{fig:errorSignal}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
 
 \section{Measuring Water Vapor Concentration Using the PDH Setup}
 Discuss: I am not doing the laser lock, but instead locking the cavity length to the frequency stable 738nm laser and measuring intensity drift due to water vapor change (as 935nm is readily absorbed by water) of the frequency-stable 935nm laser to indicate a water vapor concentration drift. 
