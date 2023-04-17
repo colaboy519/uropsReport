@@ -56,7 +56,7 @@
 \maketitle
 
 \chapter*{Abstract}
-As lasers are used to address atomic energy level transitions in atomic and molecular physics laboratory, it is of great importance to generate high quality lasers beams. This report first discusses the repair and tuning of a compact grating-stabilized External Cavity Diode Laser system (ECDL). Secondly, this report discusses the process of locking a cavity to a master laser through a standard Pound-Drever-Hall (PDH) scheme and possible uses of such a locked cavity. 
+As lasers are used to address atomic energy level transitions in atomic and molecular physics laboratory, it is of great importance to generate laser beams of accurate frequency with narrow bandwidth. This report first discusses the repair and tuning of a compact grating-stabilized External Cavity Diode Laser system (ECDL). Secondly, this report discusses the process of locking a cavity to a master laser through a standard Pound-Drever-Hall (PDH) scheme and possible uses of such a locked cavity. 
 
 
 \chapter*{Acknowledgements}
@@ -68,10 +68,9 @@ This project would not have been possible without the superb people mentioned.
 \tableofcontents
 
 \chapter{Introduction}
-In the ion trapping laboratory of professor Dzmitry Matsukevich, Ytterbium 171 ions are trapped for state manipulation and detection. Some main energy levels under interest of Ytterbium 171 ions are shown in Fig \ref{fig:Yitterbium171Ion}. Energy level transition between  $^2 S_{1/2}$ F=0 and $^2 S_{1/2}$ F=1 is the main energy level of interest, a 369.5261nm laser beam is used to address the energy level transition between the two states through Raman transition. When the trapped ion is in any of these two states, it fluoresces and can be captured by a photodetector. There exists some probabilities that the trapped ion might transit to the energy states displayed towards the right of Fig \ref{fig:Yitterbium171Ion}. To optically pumped the ion out of these "dark states", 935.1879nm and two $\approx$ 638nm laser beams are used. Original a compact grating-stabilized External Cavity Diode Laser system of frequency $\approx$ 638nm was used to generate the $\approx$ 638nm laser beam but suffered a diode failure. I replaced the diode and tuned the laser back to the needed frequency. In this report I document the procedure and relevant information. 
-\\
+In the ion trapping laboratory of professor Dzmitry Matsukevich, Ytterbium 171 ions are trapped for state manipulation and detection. Some main energy levels under interest of Ytterbium 171 ions are shown in Fig \ref{fig:Yitterbium171Ion}. Energy level transition between  $^2 S_{1/2}$ F=0 and $^2 S_{1/2}$ F=1 is the main energy level transition of interest, a 369.5261nm laser beam is used to address the energy level transition between the two states through Raman transition. When the trapped ion is in any of these two states, it fluoresces upon excitation by the probe beam and can be captured by a photodetector. There exists non-negligible probabilities that the trapped ion might transit to the energy states displayed towards the right of Fig \ref{fig:Yitterbium171Ion}. To optically pumped the ion out of these "dark states", 935.1879nm and two $\approx$ 638nm laser beams are used. Originally a compact grating-stabilized External Cavity Diode Laser system of frequency $\approx$ 638nm was used to generate the $\approx$ 638nm laser beam but suffered a diode failure. I replaced the diode and tuned the laser back to the needed frequency. In this report I document the procedure and relevant information. 
 \par
-As the transition to the $^2 D_{3/2}$ states is quite probable, the 935.1879nm laser has to be kept on most of the time to continuously pump the trapped ion back to bright states. Hence, effort is needed to frequency lock the laser. One way to achieve this is to lock the laser to a cavity which is locked to a master laser (assumed frequency stable) through a standard Pound–Drever–Hall (PDH) technique. 
+As the transition to the $^2 D_{3/2}$ states is quite probable, the 935.1879nm laser has to be kept on most of the time to continuously pump the trapped ion out of these dark states. Hence, effort is needed to frequency lock the 935nm laser. One way to achieve this is to lock the laser to a cavity which is locked to a master laser (assumed frequency stable) through a standard Pound–Drever–Hall (PDH) technique. 
 
 \begin{figure}[H]
     \centering
@@ -82,11 +81,11 @@ As the transition to the $^2 D_{3/2}$ states is quite probable, the 935.1879nm l
 \end{figure}
 
 
-\chapter{Building And Tuning A Compact 638nm Grating Stabilized Diode Laser System}/
+\chapter{Repairing And Tuning A Compact 638nm Grating Stabilized Diode Laser System}/
 \section{Theory and Laser Frequency Tuning}
 Since their first use in atomic physics in the early 80's, diode lasers have become an important part of many modern experiments. This is primarily due to the high reliability and the low price of these devices which facilitate experiments involving a number of lasers operating at different frequencies \cite{compactGratingDiodeLaser}.
 \par
-This section of the report discusses a compact grating-stabilized External Cavity Diode Laser (ECDL) system. Here, I focused on fixing an existing 638nm laser system that had suffered from a diode failure. I replaced the diode (Thorlabs, L638P040 - 638 nm, 40 mW, Ø5.6 mm pin diode) and tuned the laser around 638.61nm of wavelength for optically pumping Ytterbium ion out of the ${ }^2 F_{7 / 2}$ hyperfine states (See red-boxed transition in Fig \ref{fig:Yitterbium171Ion}. Laser light of wavelengths of 638.6102nm and 638.6151nm are used to drive the transitions ${ }^2 F_{7 / 2}|F=3\rangle \leftrightarrow{ }^1[5 / 2]_{5 / 2}|F=2\rangle \text { and }{ }^2 F_{7 / 2}|F=4\rangle \leftrightarrow{ }^1[5 / 2]_{5 / 2}|F=3\rangle$ respectively. (See Fig \ref{fig:Yitterbium171Ion}) As the transition of the trapped ion to these states are no very probable, is neither fine tuned nor frequency locked. Jumping between the two transitions is done by manually tuning the injection current(details on frequency tuning will be discussed later). The main sources for this section of the report are \cite{compactGratingDiodeLaser}\cite{fundamentalsOfPhotonics}.
+This section of the report discusses a compact grating-stabilized External Cavity Diode Laser (ECDL) system. Here, I focused on fixing an existing 638nm laser system that had suffered from a diode failure. I replaced the diode (Thorlabs, L638P040 - 638 nm, 40 mW, Ø5.6 mm pin diode) and tuned the laser around 638.61nm of wavelength for optically pumping Ytterbium ion out of the ${ }^2 F_{7 / 2}$ hyperfine states. Laser light of wavelengths of 638.6102nm and 638.6151nm are used to drive the transitions ${ }^2 F_{7 / 2}|F=3\rangle \leftrightarrow{ }^1[5 / 2]_{5 / 2}|F=2\rangle \text { and }{ }^2 F_{7 / 2}|F=4\rangle \leftrightarrow{ }^1[5 / 2]_{5 / 2}|F=3\rangle$ respectively. (See Fig \ref{fig:Yitterbium171Ion} Red box) As the transition of the trapped ion to these states are not very probable, it's neither fine tuned nor frequency locked. Jumping between the two transitions is done by manually tuning the injection current to the diode (details on frequency tuning will be discussed later). The main sources for this section of the report are \cite{compactGratingDiodeLaser}\cite{fundamentalsOfPhotonics}.
 
 \begin{figure}[H]
     \centering
@@ -103,9 +102,9 @@ This section of the report discusses a compact grating-stabilized External Cavit
     \label{fig:638laserSetup}
 \end{figure}
 
-A free-running diode suffers from having a large linewidth. In the context of ion trapping laboratory, large linewidth can result in reduced cooling efficiency, unintended energy level transitions or undesired coupling to nearby energy level and so on. An optical cavity that provides optical feedback can greatly reduce the output linewidth. How an external cavity affects emission wavelength will be discussed later. In the system under discussion, the first-order diffracted light from the diffraction grating is coupled back into the diode, so that the grating and the diode form an external resonator. The use of a diffraction grating in the current setup results in a linewidth reduction of two orders of magnitude and it also allows for the selection of any desired wavelength as the external cavity length can be adjusted\cite{compactGratingDiodeLaser}.The external cavity length (distance between grating and facade of diode) is chosen to be about 15mm optimise for single mode operation according to \cite{compactGratingDiodeLaser}. A peltier element is embedded in the mechanical structure to maintain temperature of the system. A piezo actuator is placed behind the grating to allow small adjustments and scanning of the external cavity length and angle. (See \cite{compactGratingDiodeLaser} for more details)
+A free-running diode suffers from having a large linewidth. In the context of ion trapping laboratory, large linewidth can result in reduced cooling efficiency, unintended energy level transitions or undesired coupling to nearby energy level and so on. An optical cavity that provides optical feedback can greatly reduce the output linewidth. How an external cavity affects emission wavelength will be discussed later. In the system under discussion, the first-order diffracted light from the diffraction grating is coupled back into the diode, so that the grating and the diode form an external resonator. The use of a diffraction grating in the current setup results in a linewidth reduction of two orders of magnitude and it also allows for the selection of any desired wavelength as the external cavity length can be adjusted\cite{compactGratingDiodeLaser}.The external cavity length (distance between grating and facade of diode) is chosen to be about 15mm to optimise for single mode operation \cite{compactGratingDiodeLaser}. A peltier element is embedded in the mechanical structure to maintain temperature of the system. A piezo actuator is placed behind the grating to allow small adjustments and scanning of the external cavity length and diffraction grating angle. (See \cite{compactGratingDiodeLaser} for more details)
 \par
-To tune the emission wavelength of an ECOL, consider the following picture. The gain profile of a typical laser diode has a width of 10nm \cite{compactGratingDiodeLaser}. The emission wavelength is determined by the competition between the longitudinal modes of the laser cavity, which are typically separated by 100-200 GHz\cite{compactGratingDiodeLaser}. The laser operates at the mode which experiences the maximum gain (See Fig \ref{fig:diodeLaserGainCurve}. In this picture, the maximum gain happens at where the four main gain profiles overlapped the most. In Fig \ref{fig:diodeLaserGainCurve}, mission frequency is likely to be in the red marked region. 
+To tune the emission wavelength of an ECDL, consider the following picture. The gain profile of a typical laser diode has a width of 10nm \cite{compactGratingDiodeLaser}. The emission wavelength is determined by the competition between the longitudinal modes of the laser cavity, which are typically separated by 100-200 GHz\cite{compactGratingDiodeLaser}. The laser operates at the mode which experiences the maximum gain (See Fig \ref{fig:diodeLaserGainCurve}). In this picture, the maximum gain happens at where the four main gain profiles overlap the most. In Fig \ref{fig:diodeLaserGainCurve}, emission frequency is likely to be in the red-marked region. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{diodeLaserGainCurve.png}
@@ -114,9 +113,9 @@ To tune the emission wavelength of an ECOL, consider the following picture. The 
 \end{figure}
 There are three fine-tunable parameters that affect the emission wavelength: the temperature, piezo voltage and the injection current (to the diode): 
 \begin{enumerate}
-    \item Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser emission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. For instance in Fig \ref{fig:diodeLaserGainCurve}, if the Grating feedback profile is continuously shifted to the left emission frequency might jump from the red-marked region to the blue-marked region as the region of maximum overlap changes. \cite{compactGratingDiodeLaser} suggests that the width of the accessible frequency domain is typically a fraction of the spectral range of the laser cavity. Here with laser cavity being 15mm, it's several tens of GHz.
+    \item Temperature variations cause a change of the cavity length (and thus a change of the resonance frequencies of the longitudinal modes) and at the same time a frequency shift of the gain profile. Consequently, the emission wavelength can be tuned with the temperature. However, in the process of tuning, the gain of the modes varies such that at some point the laser emission frequency jumps from one mode to another (commonly referred to as \textbf{mod-hopping}), resulting in a number of inaccessible frequency domains. For instance in Fig \ref{fig:diodeLaserGainCurve}, if the Grating feedback profile is continuously shifted to the left emission frequency might jump from the red-marked region to the blue-marked region as the region of maximum overlap changes.
 
-    \item A second parameter that can be used to tune the emission wavelength is to vary the injection current. This leads to a corresponding temperature change and also a change of the carrier density and thus of refractive index of the semiconductor material. Injection current tuning also suffers from mode hopping. However, as we want to tune the wavelengths of the laser bewteen 638.6102nm and 638.6151nm to address two different state transitions quickly, we need a modhopping-free region that at least covers these two wavelengths. The solution is to vary the injection current and the piezo voltage synchronously so as to lower the probability of mod hop. As shown in Fig \ref{fig:638Driver}, from left to right are accordingly the laser driver, coefficient gain board and the piezo voltage supply. As the piezo votlage is varied, it supplies a sync output to the coefficient gain board which then outputs a proportional volage to the laser driver whcih offests the injection current such that the gain curve of injection current and grating move synchronously. 
+    \item A second parameter that can be used to tune the emission wavelength is the injection current to the diode. This leads to a corresponding temperature change and also a change of the carrier density and thus of refractive index of the semiconductor material. Injection current tuning also suffers from mode hopping. However, as we want to tune the wavelengths of the laser between 638.6102nm and 638.6151nm to address two different state transitions quickly, we need a modehop-free region that at least covers these two wavelengths. The solution is to vary the injection current and the piezo voltage synchronously so as to lower the probability of mode hop. As shown in Fig \ref{fig:638Driver}, from left to right are accordingly the laser driver, coefficient gain board and the piezo voltage supply. As the piezo votlage is varied, it supplies a sync output to the coefficient gain board which then outputs a proportional volage to the laser driver whcih offests the injection current such that the gain curve of injection current and grating move synchronously. 
 \end{enumerate}
 
 \begin{figure}[H]
@@ -126,13 +125,13 @@ There are three fine-tunable parameters that affect the emission wavelength: the
     \label{fig:638Driver}
 \end{figure}
  
-After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with the micrometer screw. The main goal now is to vary the temperature and injection current in search for a mode-hopping-free region in the gain profile near the desired wavelength of around 638.615nm. Fig \ref{fig:diodeLaserEW} shows a few tens of data points of temperature-EW plots. The bottom data points from a dense grid as expected, showing that it's a mode-hop-free region. Whereas the top few data points probably is a result of mode hopping. After many trial and error, the final set of parameters arriving at EW=638.615nm is [set temperature for the peltier = 17.92$\degree$, set current = 52.3mA, current offset = -0.563 mA, piezo voltage = 2.5 V However, this EW still suffers from drifting. 
+After careful replacement of the original dead diode, coarse adjustment of the wavelength is achieved by horizontally tilting the grating with a screw. The main goal now is to vary the temperature and injection current in search for a mode-hopping-free region in the gain profile near the desired wavelength of around 638.615nm. Fig \ref{fig:diodeLaserEW} shows a few tens of data points of temperature-EW plots. The bottom data points from a dense grid as expected, showing that it's a mode-hop-free region. Whereas the top few data points probably is a result of mode hopping. After many trial and error, the final set of parameters arriving at EW=638.615nm is: set temperature for the peltier = 17.92$\degree$, set current = 52.3mA, current offset = -0.563 mA, piezo voltage = 2.5 V. However, this EW still suffers from drifting. 
 %TODO: explain the current offset here
 
 \begin{figure}[H]
     \centering
     \includegraphics{diodeLaserEW.png}
-    \caption{Diode EW - temperature}
+    \caption{Diode emission wavelength at different Peltier set temperature}
     \label{fig:diodeLaserEW}
 \end{figure}
 
@@ -147,24 +146,24 @@ To do a proper knife edge measurement, refer to \cite{KnifeEdgeMeasurement} for 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.6\textwidth]{knifeEdgeMeasurement.jpeg}
-    \caption{Knife Edge Measurement}
+    \caption{Knife Edge Measurement Schematic}
     \label{fig:knifeEdgeMeasurement}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=.8\textwidth]{knifeEdgeMeasurementSetup.png}
-    \caption{Knife edge measurement estup}
+    \caption{Knife edge measurement setup}
     \label{fig:knifeEdgeMeasurementSetup}
 \end{figure}
 
-Although the aforementioned knife edge measurement with a knife blade is can be very precise up to the limit of diffraction caused by the blade, it's very time consuming without the translational stage being automated. With time constraint, a less precise (up to $\mu m$ level) yet much faster method with a CCD camera can be employed. Place a camera such that the laser beam spot falls completely on the CCD sensor. Run code \ref{gaussianBeamCharacterisation} in Annex to measure the laser beam spot horizontal and vertical radius at the position of the CCD sensor. The find horizontal radius, the code sums up all rows of pixels and filter for pixels exceeding $1/e^2$ of the pixel with maximum reading. Then take the right most pixel position minus the left more pixel position as an estimate of the beam spot diameter. The code runs similarly for vertical beam spot radius. For details, see code \ref{code:gaussianBeamCharacterisation} in Annex. I used a Point Grey Research Chameleon CMLN-13S2M CCD camera with pixel size 3.75 µm for data taking. Pixel size is important here as it determines the error margin of my final estimated beam diameter. To use \ref{code:gaussianBeamCharacterisation} as it is, take a background image and 5 beam images at differnt z-positions. Name the files according to README and run the script to get an estimation of the horizontal and vertical beam radius. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
-\\
+Although the aforementioned knife edge measurement with a knife blade is very precise up to the limit of diffraction caused by the blade, it's very time consuming without the translational stage being automated. With time constraint, a less precise (up to $\mu m$ level) yet much faster method with a CCD camera can be employed. Place a camera such that the laser beam spot falls completely on the CCD sensor.  I used a Point Grey Research Chameleon CMLN-13S2M CCD camera with pixel size 3.75 µm for data taking. Pixel size is important here as it determines the error margin of my final estimated beam diameter. To use \ref{code:gaussianBeamCharacterisation} as it is, take a background image and 5 beam images at differnt z-positions. Name the files according to README and run the script to get an estimation of the horizontal and vertical beam radius. To find horizontal radius, the code sums up all rows of pixels and filter for pixels exceeding $1/e^2$ of the pixel with maximum reading. Then take the right most pixel position minus the left more pixel position as an estimate of the beam spot diameter. The code runs similarly for vertical beam spot radius. For details, see code \ref{code:gaussianBeamCharacterisation} in Annex. Adjust the collimating lens accordingly to make the beam waist z position as far as possible. 
 \par
 In order to monitor the laser system emission wavelength, part of the laser beam power is sent to the wavemeter via a fiber. To send a laser beam into a single-mode optical fibre is to couple their spatial modes, follow the procedure listed in Appendix \ref{appendix:laerFibreCoupling}. In red rectangle of Fig \ref{fig:638laserSetup}, the left fibre mount is used to send partial laser power to the wavemeter for wavelength monitoring and the right fibre mount is used to send laser beam to the ion trap for use. 
 
-\chapter{Locking A F-P Cavity To A Master laser Through PDH Technique}
-Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. The standard PDH method of frequency-locking involves the following process: A laser's frequency is measured with a Fabry-Perot cavity, and this measurement is fed back to the laser to suppress frequency drift\cite{PDH1983}\cite{PDHintro}.
+
+\chapter{Locking A F-P Cavity To A Master Laser Through PDH Technique}
+Tunable lasers have multiple wavelength-selecting elements such as piezo-controlled etalons and gratings. Typically, the length of the lasing cavity is controlled by a voltage sent to a piezo-electric transducer. The laser-cavity length can change because of a number of factors such as temperature changes, and mechanical vibrations. These factors affect the laser-frequency stability. Thus effort is needed to frequency lock a laser. One common method is the PDH technique which involves the following process: A laser's frequency is measured with a Fabry-Perot cavity, and this measurement is fed back to the laser to suppress frequency drift\cite{PDH1983}\cite{PDHintro}.
 \par
 \begin{figure}[H]
     \centering
@@ -175,7 +174,7 @@ Tunable lasers have multiple wavelength-selecting elements such as piezo-control
 
 Referring to Fig \ref{fig:PDHlayout}, the basic steps of a PDH locking scheme are outlined as following: 
 \begin{enumerate}
-    \item A laser beam is passed through a Pockels cell to modulate its frequency at a frequency small relative to the $\Delta \nu_{fsr}$ free spectral range of the optical cavity. My cavity has length $L=15$cm, $\Delta \nu_{fsr} = c/2L \approx 1GHz$. Hence my EOM at $\approx 38 MHz$, as discussed in the EOM section, is appropriate here. Note that EOM only modulates light of polarisation parrallel to the EOM's oscillating electric field. In my case horizontal polarisation w.r.t the optical table is used. (i.e. a quarter-wave-plate and half-wave-plate pair is used to clean up laser beam polarisation to be horizontal before entering the EOM) 
+    \item A laser beam is passed through a Pockels cell to modulate its frequency at a frequency small relative to the $\Delta \nu_{fsr}$ free spectral range of the optical cavity. My cavity has length $L=15$cm, $\Delta \nu_{fsr} = c/2L \approx 1GHz$. Hence my EOM at $\approx 18 MHz$, as discussed in the EOM section, is appropriate here. Note that EOM only modulates light of polarisation parrallel to the EOM's oscillating electric field. In my case horizontal polarisation w.r.t the optical table is used. (i.e. a quarter-wave-plate and half-wave-plate pair is used to clean up laser beam polarisation to be horizontal before entering the EOM) 
 
     \item The beam goes do the cavity. An optical isolator is used to pick up reflected beam from the cavity. I used a quarter wave plate and a polarising beam splitter. 
 
@@ -200,7 +199,7 @@ In certain types of crystals it is possible to effect a change in the index of r
 
 \subsection{Theory and Model}
 When a time-varying electric field is applied to the nonlinear crystal inside the EOM, the index of refraction $n$ changes in a sinusoidal manner resulting in phase modulation of the laser beam passing through the crystal. Consider the following short mathematical example to see that phase modulation is equivalent to frequency modulation: 
-\\
+\par
 % 见激光原理for this part
 Suppose instantaneous electric field at a point of EM wave of a laser beam: 
 \begin{align*}
@@ -231,8 +230,7 @@ Eqn \ref{eqn:7.1.10} shows that when a single-frequency laser beam is modulated 
 Sideband amplitudes are determined by the Bessel function $J_n(m)$. What's of concern in this case is that EOM phase modulation produces frequency sidebands of modulated laser beam. 
 
 \subsection{EOM Tank Circuit Board: Model and Construction}
-To construct an EOM tank circuit board and tune it to a particular frequency, the following sources are useful: \cite{20MHzEOM}is the main paper that discusses Design and construction of an efficient electro-optic modulator for laser spectroscopy. Prof Christian group's internal wiki has an entry on "How to build an EOM". There is a set of detailed note on EOM construction written by Meng Khoon. 
-\\
+To construct an EOM tank circuit board and tune it to a particular frequency, the following sources are useful: \cite{20MHzEOM} is the main paper that discusses Design and construction of an efficient electro-optic modulator for laser spectroscopy. Prof Christian group's internal wiki has an entry on "How to build an EOM". There is a set of detailed note on EOM construction written by Meng Khoon. 
 \par
 The schematic of EOM circuit board is shown in Fig \ref{fig:eom-tank-cirucuit1}. Note that the components L, $C_1$, $C_2$ here are nonideal components, i.e. the parasitics are if ignored here.
 $C_1$ refers to EOM crystal (ideally with correct AR coating for the relevant wavelength, in my case $\approx$738nm and $\approx$965nm)
@@ -280,7 +278,7 @@ Lastly set up a measurement circuit as shown in Fig \ref{fig:eom-freq-measuremen
     \label{fig:eom-freq-measurement-setup.png}
 \end{figure}
 
-After tuning the variable capacitor, my EOM tank circuit (Fig \ref{fig:EOMboard}) board has a resonant frequency $f_0 \approx 17.95 MHz$, see Fig \ref{fig:EOMfrequencyMeasurement}. 
+However, as there is no variable capacitor of my needed value available in the electronic workshop, I didnot use one for my EOM tank circuit board (See Fig \ref{fig:EOMboard}. The board has a resonant frequency $f_0 \approx 17.95 MHz$, see Fig \ref{fig:EOMfrequencyMeasurement}. 
 
 \begin{figure}[H]
     \centering
@@ -289,9 +287,7 @@ After tuning the variable capacitor, my EOM tank circuit (Fig \ref{fig:EOMboard}
     \label{fig:EOMfrequencyMeasurement}
 \end{figure}
 
-A final word on EOM construction: To improve on the Q-factor of the EOM tank circuit, parasitics of the circuit need to be better charactersied and subsequently matching impedance better. A better impedance matching will lead to higher efficiency of absorption of input RF signal. A small-voltage RF signal can bring about more significant modulation. However, my EOM as it currently is suffices for my subsequent task. 
-%TODO: measure Q-factor of my EOM board
-%TODO: insert an image of my actual EOM board here
+A final word on EOM construction: To improve on the Q-factor of the EOM tank circuit, parasitics of the circuit need to be better charactersied and subsequently matching impedance better. A better impedance matching will lead to higher efficiency of absorption of input RF signal. A small-voltage RF signal can bring about more significant modulation. However, my EOM as it currently is suffices for my subsequent task. During testing of one of my previous EOM tank circuit board with a Red Pitaya, the back reflection of RF signal due to bad impedance matching was so severe that the RF port of the Red Pitaya got killed. 
 
 \section{Fabry-Perot Cavity}
 \subsection{Theory}
@@ -313,7 +309,7 @@ What's relevant to this report is a particular type of optical resonator: confoc
     \label{fig:confocalCavity}
 \end{figure}
 
-One good way to measure the frequency of a laser's beam is send it into a Fabry-Perot cavity and look at what gets transmitted (or reflected). Light can only pass through a Fabry-Perot cavity if twice the length of the cavity is equal to an integer number of wavelengths of the light. Or equivalently put, the frequency of the light's electromagnetic wave must be an integer number times the cavity's free spectral range $\Delta \nu_{fsr} \equiv c/2L$, where $L$ is the length of the cavity and $c$ is the speed of light. For my case $\Delta \nu_{fsr} \approx 1GHz$. The cavity acts as a filter, with transmission lines, or resonances, spaced evenly in frequency every free spectral range. Fig \ref{fig:cavityTransmission}  shows a plot of the fraction of light transmitted through a Fabry-Perot cavity versus the frequency of the light. \cite{PDHintro}\cite{fundamentalsOfPhotonics}
+One good way to measure the (relative) frequency of a laser's beam is send it into a Fabry-Perot cavity and look at what gets transmitted (or reflected). Light can only pass through a Fabry-Perot cavity if twice the length of the cavity is equal to an integer number of wavelengths of the light. Or equivalently put, the frequency of the light's electromagnetic wave must be an integer number times the cavity's free spectral range $\Delta \nu_{fsr} \equiv c/2L$, where $L$ is the length of the cavity and $c$ is the speed of light. For my case $\Delta \nu_{fsr} \approx 1GHz$. The cavity acts as a filter, with transmission lines, or resonances, spaced evenly in frequency every free spectral range. Fig \ref{fig:cavityTransmission}  shows a plot of the fraction of light transmitted through a Fabry-Perot cavity versus the frequency of the light \cite{PDHintro}\cite{fundamentalsOfPhotonics}.
 
 \begin{figure}[H]
     \centering
@@ -357,13 +353,13 @@ The actual set up of the PDH scheme is shown in Fig \ref{fig:PDHsetup}. In the r
     \label{fig:PDHsetup}
 \end{figure}
 
-The electronic parts are shown in Fig ... The signal from local oscillator is split by a fifty-fifty power splitter. One branch goes to the mixer L port. The other branch goes to an amplifier before being sent to the EOM board. One thing worth noting is that when local oscillator $V_pp$ goes above 200mV, the EOM board in Fig \ref{fig:EOMboard} radiates significant RF signal such that the wavemeter located on the top rack gets affected. Fast diode signal from Fig \ref{fig:PDHsetup} yellow box connects to mixer I port. mixer R port after passing through a low-pass filter outputs the error signal shown in Fig \ref{fig:errorSignal}, where the blue curve is the error signal and the yellow curve is the transmission intensity.  Note that from the local oscillator to the I and L ports of the mixer, signals go through different lengths. Hence, the two signals need to be phase-matched in order for the error signal to be generated properly. This was done by varying the length of the BNC cable connecting the power splitter 
+The electronics of the PDH scheme are shown in Fig \ref{fig:PDHelectronics}. The signal from local oscillator is split by a fifty-fifty power splitter. One branch goes to the mixer L port. The other branch goes to an amplifier before being sent to the EOM board. One thing worth noting is that when local oscillator $V_pp$ goes above 200mV, the EOM board in Fig \ref{fig:EOMboard} radiates significant RF signal such that the wavemeter located on the top rack gets affected. Fast diode signal from Fig \ref{fig:PDHsetup} yellow box connects to mixer I port. mixer R port after passing through a low-pass filter outputs the error signal shown in Fig \ref{fig:errorSignal}, where the blue curve is the error signal and the yellow curve is the transmission intensity.  Note that from the local oscillator to the I and L ports of the mixer, signals go through different lengths. Hence, the two signals need to be phase-matched in order for the error signal to be generated properly. This was done by varying the length of the BNC cable connecting the power splitter 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \includegraphics[width=.8\textwidth]{PDHelectronics.png}
+    \caption{PDH electronics}
+    \label{fig:PDHelectronics}
 \end{figure}
 
 \begin{figure}[H]
@@ -396,13 +392,13 @@ The error signal is sent to the PID board which then outputs a feedback signal t
     \label{fig:cavityLock3}
 \end{figure}
 
-There are two major remaining tasks. Firstly, a phase delay board is needed to better matched the two signals going into the mixer to generator a better error signal. Secondly, the PID parameters need to be better tuned to tighten the feedback lock. 
+There are two major remaining tasks. Firstly, a phase delay board is needed to better phase match the two signals going into the mixer to generate a better error signal. Secondly, the PID parameters need to be better tuned to tighten the feedback lock. 
 
 \section{Possible Uses Of The Locked Cavity}
-Assuming that cavity length has now been locked to the 738nm master laser. Here are a list of uses and fun projects involving the locked cavity" 
+Assuming that cavity length has now been locked to the 738nm master laser. Here are a list of uses and fun projects involving the locked cavity: 
 \begin{enumerate}
-    \item Adding a dichoric lens and a second fast diode creates a second PHD setup for $\approx$935nm laser that can be used to frequency locking. As discussed earlier, the frequency of the $\approx$935nm laser needs to be stabilised for continuous optical repumping.
-    \item As the cavity length is now stabilised, if both the 935nm and 738nm lasers' output intensity are sufficiently stable, variation in transmission intensity can be attributed to factors such as watervapor absorption of 935nm laser since this wavelength happens to be quite close to a water molecule absorption peak. 
+    \item Adding a dichoric lens and a second fast diode creates a second PDH setup for $\approx$935nm laser that can be used for frequency locking. As discussed earlier, the frequency of the $\approx$935nm laser needs to be stabilised for continuous optical repumping.
+    \item As the cavity length is now stabilised, if both the 935nm and 738nm lasers' output intensity are sufficiently stable, variation in transmission intensity can be attributed to factors such as water vapor absorption of 935nm laser since this wavelength happens to be quite close to a water molecule absorption peak. Thus transmission intensity variation can be mapped to water vapor concentration variation in the lab. 
 \end{enumerate}
 
 However, as at the moment the 738nm master laser is not properly locked to the Ytterbium atomic cell these ideas have not been executed.
